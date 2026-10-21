@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "defaults": {
+    "gender": "maennlich",
+    "activity": "aktiv",
+    "protein": "erhoeht"
+  },
+  "gender": {
+    "maennlich": {
+      "label": "Männlich",
+      "nutrients": {
+        "Iron (mg)": { "min": 10, "max": 50 },
+        "Magnesium (mg)": { "min": 350, "max": null },
+        "Zinc (mg)": { "min": 14, "max": 40 },
+        "Vitamin A [Retinol] (µg)": { "min": null, "max": 3000 },
+        "Total Vitamin A (µg)": { "min": 850, "max": null },
+        "Vitamin B1 (Thiamin) (mg)": { "min": 1.2, "max": null },
+        "Vitamin B2 (Riboflavin) (mg)": { "min": 1.4, "max": null },
+        "Vitamin B3 (Niacin) (mg)": { "min": 15, "max": 900 },
+        "Vitamin B6 (mg)": { "min": 1.6, "max": 1000 },
+        "Vitamin C (mg)": { "min": 110, "max": 3000 }
+      }
+    },
+    "weiblich": {
+      "label": "Weiblich",
+      "nutrients": {
+        "Iron (mg)": { "min": 15, "max": 50 },
+        "Magnesium (mg)": { "min": 300, "max": null },
+        "Zinc (mg)": { "min": 8, "max": 40 },
+        "Vitamin A [Retinol] (µg)": { "min": null, "max": 3000 },
+        "Total Vitamin A (µg)": { "min": 700, "max": null },
+        "Vitamin B1 (Thiamin) (mg)": { "min": 1.0, "max": null },
+        "Vitamin B2 (Riboflavin) (mg)": { "min": 1.1, "max": null },
+        "Vitamin B3 (Niacin) (mg)": { "min": 12, "max": 900 },
+        "Vitamin B6 (mg)": { "min": 1.4, "max": 1000 },
+        "Vitamin C (mg)": { "min": 95, "max": 3000 }
+      }
+    }
+  },
+  "activity": {
+    "nicht_aktiv": {
+      "label": "Nicht aktiv",
+      "energy": {
+        "maennlich": { "min": 2100, "max": 2300 },
+        "weiblich": { "min": 1600, "max": 1800 }
+      }
+    },
+    "etwas_aktiv": {
+      "label": "Etwas aktiv",
+      "energy": {
+        "maennlich": { "min": 2500, "max": 2700 },
+        "weiblich": { "min": 1900, "max": 2100 }
+      }
+    },
+    "aktiv": {
+      "label": "Aktiv",
+      "energy": {
+        "maennlich": { "min": 2800, "max": 3000 },
+        "weiblich": { "min": 2300, "max": 2500 }
+      }
+    },
+    "sehr_aktiv": {
+      "label": "Sehr aktiv",
+      "energy": {
+        "maennlich": { "min": 3400, "max": 3600 },
+        "weiblich": { "min": 2800, "max": 3000 }
+      }
+    }
+  },
+  "protein": {
+    "normal": {
+      "label": "Normaler Eiweißbedarf",
+      "values": {
+        "maennlich": 80,
+        "weiblich": 60
+      }
+    },
+    "erhoeht": {
+      "label": "Erhöhter Eiweißbedarf",
+      "values": {
+        "maennlich": 180,
+        "weiblich": 130
+      }
+    }
+  },
+  "common": {
+    "Saturated Fat (g)": { "min": null, "max": 40 },
+    "Total sugars (g)": { "min": null, "max": 60 },
+    "Dietary Fibre (g)": { "min": 30, "max": 60 },
+    "Sodium (mg)": { "min": null, "max": 3000 },
+    "Cholesterol (mg)": { "min": null, "max": null },
+    "Potassium (mg)": { "min": 3500, "max": null },
+    "Calcium (mg)": { "min": 1000, "max": 3000 },
+    "Phosphorus (mg)": { "min": 700, "max": 5000 },
+    "Copper (mg)": { "min": 1.3, "max": 10 },
+    "Chloride (mg)": { "min": 2300, "max": null },
+    "Manganese (mg)": { "min": 2.0, "max": 12 },
+    "Selenium (µg)": { "min": 60, "max": 400 },
+    "Iodine (µg)": { "min": 150, "max": 1100 },
+    "Beta-Carotene (µg)": { "min": null, "max": null },
+    "Vitamin D (µg)": { "min": 25, "max": 100 },
+    "Vitamin E (mg)": { "min": 12, "max": 1000 },
+    "Vitamin K1 (µg)": { "min": 70, "max": null },
+    "Vitamin K2 (µg)": { "min": null, "max": null },
+    "Total Vitamin K (µg)": { "min": 75, "max": null },
+    "Vitamin B12 (µg)": { "min": 2.5, "max": null },
+    "Folate (Vitamin B9) (µg)": { "min": 300, "max": null },
+    "Vitamin B5 (Pantothenic Acid) (mg)": { "min": 6, "max": null },
+    "Biotin (µg)": { "min": 40, "max": null },
+    "AAS (%)": { "min": null, "max": null },
+    "Histidine (mg)": { "min": null, "max": null },
+    "Isoleucine (mg)": { "min": null, "max": null },
+    "Leucine (mg)": { "min": null, "max": null },
+    "Lysine (mg)": { "min": null, "max": null },
+    "Methionine (mg)": { "min": null, "max": null },
+    "Cystine (mg)": { "min": null, "max": null },
+    "Phenylalanine (mg)": { "min": null, "max": null },
+    "Tyrosine (mg)": { "min": null, "max": null },
+    "Threonine (mg)": { "min": null, "max": null },
+    "Tryptophan (mg)": { "min": null, "max": null },
+    "Valine (mg)": { "min": null, "max": null }
+  },
+  "macros": {
+    "fat_kcal_fraction": { "min": 0.2, "max": 0.3 },
+    "carb_kcal_fraction_min": 0.45,
+    "fat_g_floor": { "min": 40, "max": 55 },
+    "carb_g_floor": 200
+  }
+}

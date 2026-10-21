@@ -1,0 +1,3770 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ideale Ernährung | Ernährungsplaner &amp; Optimierung</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Ernährungsplan im Browser berechnen: Lebensmittel vergleichen, Nährwertziele setzen, günstigste Kombination finden. Lokal, ohne Konto.">
+<meta name="author" content="Simon Stark">
+<link rel="canonical" href="https://smstark-projekt.de/ernaerung/">
+<link rel="icon" type="image/svg+xml" href="../images/favicons/favicon-1g-dotgrid.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicons/favicon-1g-dotgrid-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../images/favicons/favicon-1g-dotgrid-16.png">
+<link rel="shortcut icon" href="../images/favicons/favicon-1g-dotgrid.ico">
+<link rel="apple-touch-icon" sizes="64x64" href="../images/favicons/favicon-1g-dotgrid-64.png">
+<meta name="theme-color" content="#0c0c0f">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-title" content="Ideale Ernährung">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SMStark Projekt">
+<meta property="og:url" content="https://smstark-projekt.de/ernaerung/">
+<meta property="og:title" content="Ideale Ernährung | Ernährungsplaner &amp; Optimierung">
+<meta property="og:description" content="Ernährungsplan im Browser berechnen: Lebensmittel vergleichen, Nährwertziele setzen, günstigste Kombination finden. Lokal, ohne Konto.">
+<meta property="og:image" content="https://smstark-projekt.de/images/website-home-menu.png">
+<meta property="og:image:alt" content="SMStark Projekt | interaktive Tools und Dashboards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ideale Ernährung | Ernährungsplaner &amp; Optimierung">
+<meta name="twitter:description" content="Nährwertziele setzen und den günstigsten Ernährungsplan im Browser berechnen. Lokal, ohne Konto.">
+<meta name="twitter:image" content="https://smstark-projekt.de/images/website-home-menu.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+
+
+
+
+  <style>
+  :root { --bd:#d0d5dd; --bg:#f7f8fa; --accent:#2563eb; --ok:#16a34a; --err:#dc2626; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 0; color:#1a1a1a; background:#fff; }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--bd); }
+  header h1 { margin: 0; font-size: 18px; }
+  nav { display: flex; gap: 4px; padding: 0 20px; border-bottom: 1px solid var(--bd); background: var(--bg); }
+  nav button { border: none; background: none; padding: 12px 16px; cursor: pointer; font: inherit;
+    border-bottom: 2px solid transparent; color: #555; }
+  nav button.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  main { padding: 20px; }
+  .tab { display: none; }
+  .tab.active { display: block; }
+  .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  button.act { background: var(--accent); color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font: inherit; }
+  button.ghost { background: #fff; border: 1px solid var(--bd); padding: 7px 12px; border-radius: 6px; cursor: pointer; font: inherit; }
+  .scroll { overflow-x: auto; border: 1px solid var(--bd); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border-bottom: 1px solid #eceff3; padding: 4px 6px; text-align: left; white-space: nowrap; }
+  thead th { position: sticky; top: 0; background: var(--bg); font-weight: 600; }
+  th[data-sort] { cursor: pointer; user-select: none; }
+  th[data-sort]:hover { color: var(--accent); }
+  td input { width: 90px; border: 1px solid transparent; padding: 3px 4px; font: inherit; border-radius: 4px; }
+  td input:focus { border-color: var(--accent); outline: none; }
+  td .unit-badge { color: #555; font-variant-numeric: tabular-nums; }
+  #addFoodModal .af-field select { width: 100%; padding: 6px 8px; border: 1px solid var(--bd);
+    border-radius: 5px; font: inherit; background: #fff; }
+  .namewrap { display: flex; align-items: center; gap: 4px; }
+  td.name input { flex: 1; width: auto; min-width: 0; }
+  .req-grid { display: grid; grid-template-columns: 1fr 110px 110px; gap: 6px 12px; align-items: center; max-width: 560px; }
+  .req-grid .hd { font-weight: 600; color: #555; border-bottom: 1px solid var(--bd); padding-bottom: 4px; }
+  .req-grid input { padding: 5px; border: 1px solid var(--bd); border-radius: 5px; font: inherit; }
+  .req-profiles { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;
+    padding: 12px 14px; border: 1px solid var(--bd); border-radius: 8px; background: var(--bg); max-width: 720px; }
+  .req-profiles .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .req-profiles .row-lbl { font-size: 12px; color: #777; min-width: 7.5rem; }
+  #banner { background: #fff7ed; border: 1px solid #fdba74; padding: 12px 16px; border-radius: 8px; margin: 20px; display: none; }
+  .muted { color: #777; }
+  .total { font-size: 18px; font-weight: 700; margin: 12px 0; }
+  .ok { color: var(--ok); } .err { color: var(--err); }
+  /* Limiting factor: linker Seitenstrich in der Nährstoff-Summen-Tabelle */
+  #sumTable tbody tr.limit td:first-child {
+    box-shadow: inset 3px 0 0 var(--accent);
+    padding-left: 8px;
+    font-weight: 600;
+  }
+  #sumTable tbody tr.limit td:nth-child(2) { font-weight: 600; }
+  .chk td { border-bottom: 1px solid #eceff3; }
+  table.mtx th { white-space: normal; min-width: 68px; max-width: 130px; vertical-align: bottom; }
+  table.mtx td:first-child, table.mtx th:first-child { position: sticky; left: 0; white-space: nowrap; background: #fff; z-index: 1; }
+  table.mtx thead th:first-child { background: var(--bg); z-index: 2; }
+  table.mtx td { text-align: right; }
+  table.mtx td:first-child { text-align: left; }
+  .costrow { display: flex; gap: 12px; border: 1px solid var(--bd); border-radius: 8px; background: var(--bg); padding: 14px 18px; margin: 0 0 16px; max-width: 720px; }
+  #planOut .plan-table-wrap { max-width: 720px; }
+  #planOut .plan-table-wrap table { width: 100%; table-layout: auto; }
+  #planOut .plan-table-wrap th:nth-child(2),
+  #planOut .plan-table-wrap td:nth-child(2) { min-width: 7.5rem; }
+  #planOut .plan-table-wrap th:nth-child(3),
+  #planOut .plan-table-wrap td:nth-child(3) { min-width: 5.5rem; text-align: right; font-variant-numeric: tabular-nums; }
+  #planOut .plan-table-wrap td:first-child { max-width: 28rem; white-space: normal; }
+  .plan-loading { max-width: 420px; padding: 28px 20px; border: 1px solid var(--bd);
+    border-radius: 10px; background: var(--bg); }
+  .plan-loading .plan-loading-title { font-weight: 600; margin: 0 0 6px; }
+  .plan-loading .plan-loading-sub { color: #777; font-size: 13px; margin: 0 0 14px; }
+  .plan-loading .bar-track {
+    height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden;
+  }
+  /* transform (not width) so the fill can keep moving on the compositor while JS is busy */
+  .plan-loading .bar-fill {
+    height: 100%; width: 100%; border-radius: 999px;
+    background: rgba(96, 165, 250, 0.55); /* hellblau, leicht transparent */
+    transform: scaleX(0); transform-origin: left center;
+    animation: plan-load-ltr 0.4s linear infinite;
+    will-change: transform;
+  }
+  @keyframes plan-load-ltr {
+    0%   { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+  }
+  button.act:disabled { opacity: .55; cursor: wait; }
+  .costrow .cell { flex: 1; }
+  .costrow .lbl { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #777; }
+  .costrow .val { font-size: 18px; font-weight: 700; margin-top: 4px; }
+  .period-toggle { display: inline-flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+  .period-toggle button { padding: 5px 10px; font-size: 13px; }
+  .period-toggle button.active {
+    background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600;
+  }
+  dialog { border: 1px solid var(--bd); border-radius: 10px; padding: 16px; max-width: 440px; width: 92vw; }
+  dialog::backdrop { background: rgba(0,0,0,.35); }
+  #fmTable td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  #addFoodModal { max-width: 520px; padding: 0; overflow: hidden; }
+  #addFoodModal .af-head { display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; border-bottom: 1px solid var(--bd); }
+  #addFoodModal .af-body { padding: 14px 16px; max-height: min(70vh, 560px); overflow-y: auto; }
+  #addFoodModal .af-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px;
+    border-top: 1px solid var(--bd); background: var(--bg); }
+  #addFoodModal .af-field { display: grid; grid-template-columns: 1fr 120px; gap: 6px 12px; align-items: center;
+    margin-bottom: 8px; }
+  #addFoodModal .af-field label { color: #444; }
+  #addFoodModal .af-field input { width: 100%; padding: 6px 8px; border: 1px solid var(--bd);
+    border-radius: 5px; font: inherit; }
+  #addFoodModal .af-field input:focus { border-color: var(--accent); outline: none; }
+  #addFoodModal .af-section { font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    color: #777; margin: 14px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--bd); }
+  #addFoodModal .af-err { color: var(--err); font-size: 13px; margin: 0 16px 8px; display: none; }
+  td.name { min-width: 280px; }
+  table#dbTable th:first-child { min-width: 280px; }
+  button.info { border: none; background: none; cursor: pointer; font-size: 14px; padding: 2px 4px; opacity: .55; }
+  button.info:hover { opacity: 1; }
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+  .chip { border: 1px solid var(--bd); background: #fff; padding: 5px 10px; border-radius: 999px;
+    cursor: pointer; font: inherit; color: #444; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip-lbl { font-size: 12px; color: #777; margin-right: 4px; }
+  tr.cat-row td { background: var(--bg); font-weight: 700; padding: 8px 6px; border-bottom: 1px solid var(--bd);
+    position: sticky; left: 0; z-index: 1; letter-spacing: .02em; }
+  .tag-pill { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 4px;
+    background: #eef2ff; color: #3730a3; margin-right: 3px; }
+  .bar-spacer { flex: 1; min-width: 8px; }
+  .switch-wrap { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #555;
+    user-select: none; white-space: nowrap; }
+  .switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider { position: absolute; inset: 0; background: #d0d5dd; border-radius: 999px;
+    cursor: pointer; transition: background .15s; }
+  .switch .slider::before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: transform .15s; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+  .switch input:checked + .slider { background: var(--accent); }
+  .switch input:checked + .slider::before { transform: translateX(18px); }
+  .profile-card { border: 1px solid var(--bd); border-radius: 8px; padding: 14px 16px;
+    margin-bottom: 14px; max-width: 720px; background: var(--bg); }
+  .profile-card h3 { margin: 0 0 12px; font-size: 14px; font-weight: 600; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; max-width: 520px; }
+  .profile-field label { display: block; font-size: 12px; color: #777; margin-bottom: 4px; }
+  .profile-field input[type=number] { width: 100%; padding: 6px 8px; border: 1px solid var(--bd);
+    border-radius: 5px; font: inherit; }
+  .profile-summary { max-width: 720px; padding: 12px 14px; border: 1px solid var(--bd);
+    border-radius: 8px; margin-bottom: 14px; background: #fff; line-height: 1.5; }
+  .profile-slider-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 8px; }
+  .profile-slider-row input[type=range] { flex: 1; min-width: 160px; max-width: 360px; }
+  .req-pattern { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 14px;
+    padding: 10px 12px; border: 1px solid var(--bd); border-radius: 8px; background: var(--bg); max-width: 720px; }
+  @media (max-width: 560px) { .profile-grid { grid-template-columns: 1fr; } }
+</style>
+  <style id="site-ui">
+  :root {
+    --bg: #0c0c0f;
+    --surface: #13131a;
+    --card: #16161f;
+    --card-strong: #1a1a25;
+    --border: #1e1e2e;
+    --border-bright: #303047;
+    --accent: #6ee7b7;
+    --accent-strong: #34d399;
+    --accent2: #818cf8;
+    --text: #e2e8f0;
+    --muted: #718096;
+    --muted-strong: #94a3b8;
+    --ok: #6ee7b7;
+    --err: #fb7185;
+    --warn: #fbbf24;
+    --bd: var(--border);
+    --nav-h: 68px;
+    --radius: 12px;
+    --shadow: 0 24px 70px rgba(0, 0, 0, .28);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    min-width: 320px;
+    margin: 0;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse 70% 45% at 76% 9%, rgba(110, 231, 183, .055), transparent 68%),
+      radial-gradient(ellipse 55% 45% at 10% 36%, rgba(129, 140, 248, .04), transparent 70%),
+      var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  button, input, select, textarea { font: inherit; }
+  button, a, input, select { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  ::selection { background: rgba(110, 231, 183, .25); color: var(--text); }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Global navigation */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 120;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    background: rgba(12, 12, 15, .92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+  }
+  .main-nav .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .nav-logo {
+    position: absolute;
+    left: clamp(1.5rem, 5vw, 4rem);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .main-nav .nav-links a {
+    color: var(--text);
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .03em;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .main-nav .nav-links a:hover { color: var(--accent); }
+  .nav-github {
+    position: absolute;
+    right: clamp(1.5rem, 5vw, 4rem);
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .4rem .9rem;
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 8px;
+    font-size: .82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+  .nav-github:hover { color: var(--accent); border-color: var(--accent); }
+  .nav-github svg,
+  .mobile-github svg { width: 15px; height: 15px; }
+  .nav-toggle {
+    position: absolute;
+    right: 1.5rem;
+    z-index: 121;
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform .25s ease, opacity .2s ease;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    z-index: 119;
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(12, 12, 15, .98);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    transition: max-height .3s ease;
+  }
+  .mobile-menu.open { max-height: calc(100vh - var(--nav-h)); overflow-y: auto; }
+  .mobile-menu ul { padding: .4rem 1.5rem 1.4rem; margin: 0; list-style: none; }
+  .mobile-menu li + li { border-top: 1px solid var(--border); }
+  .mobile-menu a {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .95rem .2rem;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .mobile-menu a:hover,
+  .mobile-menu .mobile-github { color: var(--accent); }
+
+  /* Product hero */
+  .app-hero {
+    position: relative;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: flex-start;
+    padding: calc(var(--nav-h) + clamp(4rem, 8vw, 7rem)) clamp(1.5rem, 8vw, 8rem) clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .app-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, .055) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse 80% 90% at 72% 40%, #000, transparent);
+  }
+  .app-hero::after {
+    content: '';
+    position: absolute;
+    width: min(38vw, 540px);
+    aspect-ratio: 1;
+    top: 10%;
+    right: 4%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(110, 231, 183, .09), transparent 68%);
+    filter: blur(10px);
+  }
+  .hero-copy,
+  .hero-stats { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin: 0 0 1rem;
+    color: var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .app-hero h1 {
+    max-width: 760px;
+    margin: 0 0 1.25rem;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: .96;
+    letter-spacing: -.045em;
+  }
+  .app-hero h1 em { color: var(--accent); font-style: normal; }
+  .hero-lead {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--muted-strong);
+    font-size: clamp(.98rem, 1.3vw, 1.08rem);
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.25rem;
+    margin: 0;
+    color: var(--muted-strong);
+    font-size: .92rem;
+  }
+  .hero-stats strong {
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+  }
+
+  /* App tabs */
+  .app-tabs-wrap {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 80;
+    padding: 0 clamp(1.5rem, 8vw, 8rem);
+    background: rgba(12, 12, 15, .88);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+  }
+  .app-tabs {
+    max-width: 1520px;
+    display: flex;
+    gap: 0;
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: auto;
+    background: transparent;
+    border: 0;
+    scrollbar-width: none;
+  }
+  .app-tabs::-webkit-scrollbar { display: none; }
+  .app-tabs button {
+    position: relative;
+    min-width: max-content;
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: .01em;
+    transition: color .2s, background .2s, border-color .2s;
+  }
+  .app-tabs button:hover { color: var(--text); background: rgba(255, 255, 255, .018); }
+  .app-tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  #banner {
+    max-width: 1520px;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem auto 0;
+    color: #fed7aa;
+    background: rgba(251, 146, 60, .08);
+    border: 1px solid rgba(251, 146, 60, .35);
+    border-radius: 12px;
+  }
+  #banner code { color: #fdba74; }
+  #banner input[type=file] { color: var(--muted-strong); }
+
+  main {
+    width: 100%;
+    max-width: 1680px;
+    min-height: 65vh;
+    padding: clamp(2.5rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4.5rem) clamp(5rem, 9vw, 8rem);
+    margin: 0 auto;
+  }
+  .tab { display: none; }
+  .tab.active { display: block; animation: tab-in .28s ease both; }
+  @keyframes tab-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  .tab-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 520px);
+    gap: 1rem 2rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+  .tab-heading h2 {
+    margin: 0;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.03em;
+  }
+  .tab-heading > p {
+    max-width: 52ch;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .panel {
+    padding: clamp(1rem, 2.5vw, 1.6rem);
+    background: linear-gradient(155deg, rgba(110, 231, 183, .035), transparent 42%), var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .14);
+  }
+
+  /* Controls */
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    align-items: center;
+    margin: 0 0 1rem;
+  }
+  .bar-spacer { flex: 1 1 1rem; min-width: .5rem; }
+  button.act,
+  button.ghost {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .58rem .95rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform .15s, box-shadow .15s, border-color .2s, color .2s, background .2s;
+  }
+  button.act {
+    color: var(--bg);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  button.act:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: #86efc5;
+    box-shadow: 0 8px 24px rgba(110, 231, 183, .2);
+  }
+  button.ghost {
+    color: var(--text);
+    background: rgba(255, 255, 255, .015);
+    border: 1px solid var(--border-bright);
+  }
+  button.ghost:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  button.act:disabled,
+  button.ghost:disabled { opacity: .45; cursor: not-allowed; }
+  .db-toolbar {
+    display: grid;
+    grid-template-columns: auto auto minmax(220px, 1fr) auto;
+    gap: .65rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .search-field {
+    position: relative;
+    min-width: 220px;
+  }
+  .search-field::before {
+    content: '⌕';
+    position: absolute;
+    left: .8rem;
+    top: 50%;
+    color: var(--muted);
+    font-size: 1.2rem;
+    transform: translateY(-53%);
+    pointer-events: none;
+  }
+  #dbSearch {
+    width: 100% !important;
+    min-height: 40px;
+    padding: .62rem .85rem .62rem 2.25rem !important;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border-bright) !important;
+    border-radius: 8px !important;
+    outline: none;
+  }
+  #dbSearch::placeholder { color: var(--muted); }
+  #dbSearch:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(110, 231, 183, .08); }
+  .count-badge {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: .5rem .8rem;
+    color: var(--accent);
+    background: rgba(110, 231, 183, .07);
+    border: 1px solid rgba(110, 231, 183, .18);
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .db-note {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+  .mobile-table-hint { display: none; }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    margin: 0 0 1rem;
+  }
+  .bar > .filters { margin-bottom: 0; }
+  /* Links: Ernährungsstil + Eigenschaften | Rechts: Zeilen, Kategorien, Seite (gleiche Zeilenhöhe) */
+  .db-filter-bar {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: .55rem 2rem;
+    margin: 0 0 1rem;
+  }
+  .db-filter-groups {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+  }
+  .db-filter-groups .filters {
+    margin: 0;
+    min-width: 0;
+    min-height: 34px;
+  }
+  .db-view-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    gap: .55rem;
+    margin-left: auto;
+    padding-left: 1.25rem;
+  }
+  .db-view-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    min-height: 34px;
+    height: 34px;
+  }
+  .db-view-controls .db-pagination {
+    margin: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .chip-lbl {
+    margin-right: .15rem;
+    color: var(--muted);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .chip {
+    box-sizing: border-box;
+    min-height: 34px;
+    height: 34px;
+    padding: 0 .8rem;
+    color: var(--muted-strong);
+    background: rgba(255, 255, 255, .012);
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    transition: color .2s, border-color .2s, background .2s, transform .2s;
+  }
+  .chip:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .chip.on { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+  .database-panel .switch-wrap {
+    box-sizing: border-box;
+    min-height: 34px;
+    height: 34px;
+    gap: .5rem;
+    padding: 0 .8rem;
+    color: var(--muted-strong);
+    background: rgba(255, 255, 255, .012);
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 500;
+  }
+
+  /* Database table */
+  .database-scroll,
+  .scroll {
+    max-width: 100%;
+    overflow: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    scrollbar-color: var(--border-bright) var(--surface);
+  }
+  .database-scroll { max-height: min(68vh, 760px); }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text);
+    font-size: .82rem;
+  }
+  th, td {
+    padding: .5rem .55rem;
+    text-align: left;
+    white-space: nowrap;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    height: 42px;
+    color: var(--muted-strong);
+    background: rgba(19, 19, 26, .98);
+    border-bottom-color: var(--border-bright);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+  }
+  tbody tr { transition: background .15s; }
+  tbody tr:hover { background: rgba(110, 231, 183, .025); }
+  tbody tr:last-child td { border-bottom: 0; }
+  th[data-sort] { cursor: pointer; user-select: none; }
+  th[data-sort]:hover { color: var(--accent); }
+  table#dbTable th:first-child,
+  table#dbTable td.name {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    min-width: 280px;
+    background: var(--bg);
+    box-shadow: 1px 0 0 var(--border);
+  }
+  table#dbTable thead th:first-child {
+    z-index: 6;
+    background: rgba(19, 19, 26, .99);
+  }
+  table#dbTable tbody tr:hover td.name { background: #101014; }
+  td input,
+  .req-grid input,
+  .profile-field input[type=number],
+  #addFoodModal input,
+  #addFoodModal select {
+    color: var(--text);
+    background: rgba(255, 255, 255, .025);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    outline: none;
+  }
+  td input {
+    width: 82px;
+    padding: .34rem .42rem;
+  }
+  td.name input { min-width: 210px; color: var(--text); font-weight: 500; }
+  td input:hover { border-color: var(--border-bright); }
+  td input:focus { background: var(--surface); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(110, 231, 183, .07); }
+  input[type=number] { font-variant-numeric: tabular-nums; }
+  input[type=number]::-webkit-inner-spin-button { opacity: .35; }
+  .namewrap { display: flex; align-items: center; gap: .4rem; }
+  button.info {
+    width: 28px;
+    height: 28px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .8rem;
+    opacity: 1;
+  }
+  button.info:hover { color: var(--accent); background: rgba(110, 231, 183, .06); border-color: rgba(110, 231, 183, .18); }
+  .unit-badge { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .tag-pill {
+    display: inline-block;
+    padding: .15rem .4rem;
+    margin-right: .2rem;
+    color: var(--accent2);
+    background: rgba(129, 140, 248, .1);
+    border-radius: 4px;
+    font-size: .68rem;
+  }
+  tr.cat-row td {
+    position: relative;
+    z-index: 2;
+    padding: .65rem .7rem;
+    color: var(--accent);
+    background: #111117;
+    border-bottom-color: var(--border-bright);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .db-pagination {
+    box-sizing: border-box;
+    min-height: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+  #dbPaginationBottom { margin: .55rem 0 0; }
+  .db-pagination button {
+    box-sizing: border-box;
+    min-width: 34px;
+    min-height: 34px;
+    height: 34px;
+    padding: 0 .75rem;
+    color: var(--text);
+    background: rgba(255, 255, 255, .012);
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: .8rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .db-pagination button:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+  .db-pagination button:disabled { opacity: .35; cursor: not-allowed; }
+  .db-page-size {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    min-height: 34px;
+    height: 34px;
+    padding: 0 .45rem 0 .7rem;
+    color: var(--muted-strong);
+    background: rgba(255, 255, 255, .012);
+    border: 1px solid var(--border-bright);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .db-page-size select {
+    box-sizing: border-box;
+    min-width: 2.6rem;
+    width: auto;
+    min-height: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0 .1rem 0 0;
+    color: var(--text);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1;
+    outline: none;
+    cursor: pointer;
+    color-scheme: dark;
+  }
+  .db-page-size select:focus,
+  .db-page-size select:active {
+    color: var(--text);
+    background: transparent;
+  }
+  .db-page-size select option {
+    color: var(--text);
+    background-color: var(--surface);
+  }
+  .db-page-size select option:checked,
+  .db-page-size select option:hover {
+    color: var(--bg);
+    background-color: var(--accent);
+  }
+  .empty-row td {
+    padding: 3rem 1rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  #dbTable button.ghost {
+    min-height: 28px;
+    padding: .25rem .5rem;
+  }
+
+  /* Forms, profiles and plan */
+  .profile-card,
+  .profile-summary,
+  .req-profiles,
+  .req-pattern,
+  .costrow,
+  .plan-loading {
+    max-width: 920px;
+    padding: 1.2rem 1.3rem;
+    margin: 0 0 1rem;
+    background: linear-gradient(150deg, rgba(110, 231, 183, .035), transparent 60%), var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .profile-card h3 {
+    margin: 0 0 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .profile-grid {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.2rem;
+  }
+  .profile-field label {
+    display: block;
+    margin-bottom: .35rem;
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .profile-field input[type=number],
+  .req-grid input {
+    width: 100%;
+    min-height: 40px;
+    padding: .5rem .65rem;
+    border-color: var(--border-bright);
+  }
+  .profile-field input:focus,
+  .req-grid input:focus,
+  #addFoodModal input:focus,
+  #addFoodModal select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(110, 231, 183, .07); }
+  .profile-summary { color: var(--muted-strong); line-height: 1.65; }
+  .profile-summary b,
+  .req-pattern b { color: var(--text); }
+  .profile-slider-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: .65rem; }
+  input[type=range] { accent-color: var(--accent); }
+  .req-grid {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 130px 130px;
+    gap: .55rem .75rem;
+    align-items: center;
+    padding: 1.2rem 1.3rem;
+    margin-bottom: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .req-grid .hd {
+    padding-bottom: .5rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .req-pattern { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
+  .muted { color: var(--muted); }
+  .total { margin: 1rem 0; font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; }
+  .ok { color: var(--ok); }
+  .err { color: var(--err); }
+  .costrow { display: flex; gap: 0; padding: 0; overflow: hidden; }
+  .costrow .cell { flex: 1; padding: 1rem 1.2rem; }
+  .costrow .cell + .cell { border-left: 1px solid var(--border); }
+  .costrow .lbl {
+    color: var(--muted);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .costrow .val { margin-top: .25rem; font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; }
+  .period-toggle { display: inline-flex; flex-wrap: wrap; gap: .35rem; margin-left: auto; }
+  .period-toggle button.active { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  #planOut .plan-table-wrap { max-width: 920px; }
+  #planOut > .scroll,
+  #planOut .scroll { margin-bottom: 1rem; }
+  table.mtx td { text-align: right; }
+  table.mtx td:first-child,
+  table.mtx th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    color: var(--text);
+    background: var(--bg);
+    text-align: left;
+  }
+  table.mtx thead th:first-child { z-index: 5; background: var(--surface); }
+  #sumTable tbody tr.limit td:first-child {
+    padding-left: .75rem;
+    box-shadow: inset 3px 0 0 var(--accent);
+    font-weight: 700;
+  }
+  .plan-loading { max-width: 520px; padding: 1.5rem; }
+  .plan-loading .plan-loading-title { margin: 0 0 .35rem; font-family: 'Syne', sans-serif; font-weight: 700; }
+  .plan-loading .plan-loading-sub { margin: 0 0 1rem; color: var(--muted); }
+  .plan-loading .bar-track { height: 8px; overflow: hidden; background: var(--border); border-radius: 999px; }
+  .plan-loading .bar-fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 999px; }
+
+  /* Switch */
+  .switch-wrap { display: inline-flex; align-items: center; gap: .55rem; color: var(--muted-strong); font-size: .8rem; user-select: none; white-space: nowrap; }
+  .switch { position: relative; width: 42px; height: 23px; flex-shrink: 0; }
+  .switch input { width: 0; height: 0; opacity: 0; }
+  .switch .slider { position: absolute; inset: 0; background: var(--border-bright); border-radius: 999px; cursor: pointer; transition: background .18s; }
+  .switch .slider::before {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 3px;
+    left: 3px;
+    background: var(--text);
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+    transition: transform .18s;
+  }
+  .switch input:checked + .slider { background: var(--accent); }
+  .switch input:checked + .slider::before { background: var(--bg); transform: translateX(19px); }
+
+  /* Dialogs */
+  dialog {
+    width: min(92vw, 560px);
+    max-width: 560px;
+    padding: 1rem;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--border-bright);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  dialog::backdrop { background: rgba(3, 3, 6, .76); backdrop-filter: blur(5px); }
+  #foodModal {
+    overflow-x: hidden;
+  }
+  #foodModal .scroll {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #fmTable {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+  }
+  #fmTable th,
+  #fmTable td {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  #fmTable td:first-child {
+    width: 38%;
+    color: var(--muted);
+  }
+  #fmTable td:last-child {
+    text-align: left;
+  }
+  #addFoodModal { max-width: 640px; padding: 0; overflow: hidden; }
+  #addFoodModal .af-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Syne', sans-serif;
+  }
+  #addFoodModal .af-body { max-height: min(70vh, 620px); padding: 1rem 1.2rem; overflow-y: auto; }
+  #addFoodModal .af-foot { display: flex; justify-content: flex-end; gap: .65rem; padding: 1rem 1.2rem; background: var(--surface); border-top: 1px solid var(--border); }
+  #addFoodModal .af-field { display: grid; grid-template-columns: minmax(180px, 1fr) 160px; gap: .6rem 1rem; align-items: center; margin-bottom: .65rem; }
+  #addFoodModal .af-field label { color: var(--muted-strong); }
+  #addFoodModal .af-field input,
+  #addFoodModal .af-field select { width: 100%; min-height: 38px; padding: .48rem .6rem; border-color: var(--border-bright); }
+  #addFoodModal .af-section {
+    margin: 1.2rem 0 .75rem;
+    padding-bottom: .45rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  #addFoodModal .af-err { margin: .8rem 1.2rem 0; color: var(--err); }
+
+  /* Footer */
+  footer {
+    padding: 3.5rem clamp(1.5rem, 8vw, 8rem) 2rem;
+    color: var(--muted);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    font-size: .85rem;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .footer-logo {
+    display: inline-block;
+    margin-bottom: .9rem;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-brand p { max-width: 34ch; margin: 0; color: var(--muted); line-height: 1.6; }
+  .footer-col h5 {
+    margin: 0 0 1rem;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .footer-col ul { display: flex; flex-direction: column; gap: .65rem; padding: 0; margin: 0; list-style: none; }
+  footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--accent); }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    padding-top: 1.6rem;
+  }
+
+  @media (max-width: 1120px) {
+    .db-toolbar { grid-template-columns: repeat(2, auto) minmax(220px, 1fr); }
+    .db-toolbar .count-badge { grid-column: 1 / -1; justify-self: start; }
+  }
+  @media (max-width: 960px) {
+    .main-nav { justify-content: flex-start; padding: 0 1.5rem; }
+    .main-nav .nav-links,
+    .main-nav .nav-github { display: none; }
+    .nav-logo { position: static; }
+    .nav-toggle { display: flex; }
+    .mobile-menu { display: block; }
+    .app-tabs-wrap { padding: 0 1rem; }
+    .tab-heading { grid-template-columns: 1fr; gap: .8rem; }
+  }
+  @media (max-width: 760px) {
+    body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+    .main-nav { z-index: 141; }
+    .mobile-menu { z-index: 140; }
+    .app-hero {
+      padding: calc(var(--nav-h) + 2.8rem) 1rem 2rem;
+      gap: 1.25rem;
+    }
+    .app-hero::after { width: 85vw; right: -26%; top: 10%; }
+    .hero-eyebrow { margin-bottom: .75rem; font-size: .64rem; }
+    .app-hero h1 {
+      max-width: 10ch;
+      margin-bottom: .9rem;
+      font-size: clamp(2.65rem, 14vw, 4.2rem);
+      line-height: .94;
+    }
+    .hero-lead { font-size: .92rem; line-height: 1.55; }
+    .hero-stats { font-size: .85rem; gap: .25rem 1rem; }
+    .app-tabs-wrap {
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 130;
+      padding: 0;
+      background: rgba(12, 12, 15, .96);
+      border-top: 1px solid var(--border-bright);
+      border-bottom: 0;
+      box-shadow: 0 -12px 32px rgba(0, 0, 0, .32);
+    }
+    .app-tabs { width: 100%; max-width: none; overflow: visible; }
+    .app-tabs button {
+      min-width: 0;
+      min-height: calc(66px + env(safe-area-inset-bottom));
+      flex: 1 1 25%;
+      justify-content: center;
+      padding: .62rem .2rem calc(.48rem + env(safe-area-inset-bottom));
+      border-top: 2px solid transparent;
+      border-bottom: 0;
+      font-size: .64rem;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .app-tabs button.active { border-top-color: var(--accent); border-bottom-color: transparent; }
+    main {
+      min-height: 70vh;
+      padding: 2rem .85rem 4rem;
+    }
+    .tab-heading { margin-bottom: 1.25rem; }
+    .tab-heading h2 { font-size: clamp(1.65rem, 8vw, 2.25rem); }
+    .tab-heading > p { font-size: .86rem; line-height: 1.55; }
+    .panel {
+      padding: .8rem;
+      border-radius: 12px;
+      box-shadow: none;
+    }
+    .db-toolbar { grid-template-columns: 1fr 1fr; }
+    .db-toolbar .search-field { grid-column: 1 / -1; grid-row: 1; }
+    .db-toolbar .count-badge { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; justify-content: center; }
+    .db-toolbar button {
+      width: 100%;
+      min-height: 46px;
+      padding: .55rem .45rem;
+      font-size: .78rem;
+    }
+    #dbSearch { min-height: 46px; font-size: 16px; }
+    .db-note { margin-bottom: .75rem; font-size: .75rem; line-height: 1.55; }
+    .mobile-table-hint {
+      display: block;
+      margin: -.2rem 0 1rem;
+      padding: .65rem .75rem;
+      color: var(--muted-strong);
+      background: rgba(129, 140, 248, .06);
+      border: 1px solid rgba(129, 140, 248, .16);
+      border-radius: 8px;
+      font-size: .73rem;
+      line-height: 1.45;
+    }
+    .db-filter-bar {
+      flex-direction: column;
+      gap: .65rem;
+    }
+    .db-view-controls {
+      width: 100%;
+      padding-left: 0;
+      margin-left: 0;
+      align-items: stretch;
+      gap: .45rem;
+    }
+    .db-view-row {
+      min-height: 40px;
+      height: auto;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .db-view-controls .db-pagination {
+      width: 100%;
+      justify-content: flex-start;
+    }
+    #dbFilters {
+      width: 100%;
+      gap: .45rem;
+      margin: 0;
+    }
+    #dbFilters .filters {
+      flex-wrap: nowrap;
+      gap: .4rem;
+      padding: 0 0 .2rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      min-height: 40px;
+    }
+    #dbFilters .filters::-webkit-scrollbar { display: none; }
+    #dbFilters .chip-lbl,
+    #dbFilters .chip { flex: 0 0 auto; scroll-snap-align: start; }
+    .chip { min-height: 40px; height: 40px; }
+    .database-panel .switch-wrap { min-height: 40px; height: 40px; }
+    .db-page-size { min-height: 40px; height: 40px; }
+    .db-page-size select { min-height: 40px; height: 40px; }
+    .switch { width: 46px; height: 26px; }
+    .switch .slider::before { width: 20px; height: 20px; }
+    .switch input:checked + .slider::before { transform: translateX(20px); }
+    .database-scroll { max-height: none; }
+    #dbTable th:nth-child(n+4):not(:last-child),
+    #dbTable td:nth-child(n+4):not(:last-child) { display: none; }
+    table#dbTable th:first-child,
+    table#dbTable td.name { min-width: 178px; }
+    td.name input { min-width: 118px; width: 100%; font-size: 16px; }
+    #dbTable td:nth-child(3) input { width: 72px; font-size: 16px; }
+    #dbTable th,
+    #dbTable td { padding: .48rem .4rem; }
+    #dbTable button.info { width: 32px; height: 32px; }
+    #dbTable button.ghost { min-width: 34px; min-height: 34px; }
+    .db-pagination { min-height: 40px; height: 40px; }
+    .db-pagination button { min-width: 40px; min-height: 40px; height: 40px; }
+    .profile-grid { grid-template-columns: 1fr; }
+    .profile-card,
+    .profile-summary,
+    .req-profiles,
+    .req-pattern,
+    .costrow,
+    .plan-loading { padding: 1rem; border-radius: 10px; }
+    .profile-field input[type=number],
+    .req-grid input { min-height: 46px; font-size: 16px; }
+    .profile-slider-row input[type=range] { min-height: 32px; }
+    .req-grid {
+      grid-template-columns: minmax(110px, 1fr) minmax(68px, 78px) minmax(68px, 78px);
+      gap: .45rem;
+      padding: .8rem;
+      font-size: .78rem;
+    }
+    .costrow { flex-direction: column; }
+    .costrow .cell + .cell { border-top: 1px solid var(--border); border-left: 0; }
+    dialog,
+    #addFoodModal {
+      position: fixed;
+      inset: auto 0 0;
+      width: 100%;
+      max-width: none;
+      max-height: 88dvh;
+      margin: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 20px 20px 0 0;
+    }
+    #foodModal { padding: .85rem; }
+    #foodModal > .bar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      min-height: 48px;
+      margin: 0;
+      padding: .15rem 0 .75rem;
+      background: var(--card);
+    }
+    #fmClose { min-width: 44px; min-height: 44px; }
+    #foodModal .scroll { max-height: calc(88dvh - 72px) !important; }
+    #fmTable td { padding: .7rem .55rem; white-space: normal; }
+    #addFoodModal .af-body { max-height: calc(88dvh - 132px); padding: .9rem 1rem; }
+    #addFoodModal .af-head { min-height: 58px; padding: .8rem 1rem; }
+    #addFoodModal .af-foot {
+      padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+    }
+    #addFoodModal .af-foot button { min-height: 44px; }
+    footer { padding: 3rem 1.25rem 2rem; }
+  }
+  @media (max-width: 640px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .db-pagination { justify-content: space-between; }
+    .db-pagination .page-range { display: none; }
+    #addFoodModal .af-field { grid-template-columns: 1fr; gap: .3rem; }
+  }
+  @media (max-width: 520px) {
+    :root { --nav-h: 62px; }
+    .main-nav { height: 62px; padding: 0 1rem; }
+    .nav-toggle { right: 1rem; }
+    .app-hero { padding-top: 6.8rem; }
+    .app-tabs button { font-size: .59rem; }
+    .db-page-size { font-size: .72rem; }
+    .switch-wrap { font-size: .72rem; }
+    .req-grid input { padding: .35rem; }
+  }
+  @media (max-width: 380px) {
+    .app-hero { padding-right: .8rem; padding-left: .8rem; }
+    main { padding-right: .65rem; padding-left: .65rem; }
+    .panel { padding: .65rem; }
+    .db-toolbar { gap: .45rem; }
+    .db-toolbar button { font-size: .72rem; }
+    table#dbTable th:first-child,
+    table#dbTable td.name { min-width: 164px; }
+    td.name input { min-width: 104px; }
+    .req-grid { padding: .65rem; font-size: .72rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<nav class="main-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo" aria-label="sms. Startseite">sms<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/projekte">Projekte</a></li>
+    <li><a href="/downloads">Downloads</a></li>
+    <li><a href="/projekt-pipeline">Projekt-Pipeline</a></li>
+    <li><a href="/vision">Vision</a></li>
+    <li><a href="/wissen">Wissen</a></li>
+  </ul>
+  <a href="https://github.com/simons-0427" target="_blank" rel="noopener noreferrer" class="nav-github">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0.84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0.268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    GitHub
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/projekte">Projekte</a></li>
+    <li><a href="/downloads">Downloads</a></li>
+    <li><a href="/projekt-pipeline">Projekt-Pipeline</a></li>
+    <li><a href="/vision">Vision</a></li>
+    <li><a href="/wissen">Wissen</a></li>
+    <li>
+      <a href="https://github.com/simons-0427" target="_blank" rel="noopener noreferrer" class="mobile-github">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0.84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0.268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+    </li>
+  </ul>
+</div>
+
+<header class="app-hero">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Nutrition Optimizer | Lokal im Browser</p>
+    <h1>Ideale <em>Ernährung.</em></h1>
+    <p class="hero-lead">Vergleiche Lebensmittel, setze Tagesziele und berechne den günstigsten Plan, der sie trifft. Editierbar im Browser, ohne Konto.</p>
+  </div>
+  <p class="hero-stats" aria-label="Übersicht">
+    <span><strong id="heroFoodCount">…</strong> Lebensmittel</span>
+    <span><strong id="heroParamCount">…</strong> Nährwerte</span>
+    <span>lokal auf diesem Gerät</span>
+  </p>
+</header>
+
+<div class="app-tabs-wrap">
+  <nav class="app-tabs" aria-label="Ernährungsplaner" role="tablist">
+    <button id="tab-btn-db" data-tab="db" class="active" type="button" role="tab" aria-controls="tab-db" aria-selected="true">Datenbank</button>
+    <button id="tab-btn-profile" data-tab="profile" type="button" role="tab" aria-controls="tab-profile" aria-selected="false">Mein Profil</button>
+    <button id="tab-btn-req" data-tab="req" type="button" role="tab" aria-controls="tab-req" aria-selected="false">Anforderungen</button>
+    <button id="tab-btn-plan" data-tab="plan" type="button" role="tab" aria-controls="tab-plan" aria-selected="false">Optimaler Plan</button>
+  </nav>
+</div>
+
+<div id="banner">
+  <b>Dateien konnten nicht automatisch geladen werden.</b> Das passiert, wenn du die Seite per Doppelklick über <code>file://</code> öffnest.
+  Am besten öffnest du den Ordner über einen Mini-Server: <code>python -m http.server</code> → <code>http://localhost:8000</code>.
+  oder hier manuell laden:
+  <div style="margin-top:8px">
+    parameter.md: <input type="file" id="pickParams" accept=".md,.txt">
+    &nbsp;&nbsp;database.json: <input type="file" id="pickFoods" accept=".json">
+    &nbsp;&nbsp;requirements.json: <input type="file" id="pickReq" accept=".json">
+  </div>
+</div>
+
+<main>
+  <section id="tab-db" class="tab active" role="tabpanel" aria-labelledby="tab-btn-db">
+    <div class="tab-heading">
+      <h2>Lebensmittel-Datenbank</h2>
+      <p>Suchen, filtern, Werte editieren. Die Tabelle lädt nur die sichtbare Seite, auch wenn viele Nährwertspalten offen sind.</p>
+    </div>
+    <div class="panel database-panel">
+      <div class="db-toolbar">
+        <button class="act" id="addFood">+ Lebensmittel</button>
+        <button class="ghost" id="resetDb">Datenbank zurücksetzen</button>
+        <label class="search-field">
+          <span class="sr-only">Lebensmittel suchen</span>
+          <input id="dbSearch" type="search" placeholder="Lebensmittel suchen…" autocomplete="off">
+        </label>
+        <span class="count-badge" id="foodCount" aria-live="polite"></span>
+      </div>
+      <p class="db-note"><strong>Änderungen an der Datenbank werden automatisch lokal in diesem Browser gespeichert.</strong> Werte gelten pro 100 g / 100 ml beziehungsweise pro 1 Stück / 1 Tropfen. Eine leere Zelle entspricht 0.</p>
+      <p class="mobile-table-hint">Auf dem Smartphone zeigt die Tabelle die wichtigsten Werte. Tippe auf <strong>i</strong>, um alle Nährwerte eines Lebensmittels anzusehen.</p>
+      <div class="db-filter-bar">
+        <div class="db-filter-groups" id="dbFilters">
+          <div class="filters" role="radiogroup" aria-label="Ernährungsstil">
+            <span class="chip-lbl">Ernährungsstil</span>
+            <button type="button" class="chip on" data-diet="all" title="Omnivor – alle Lebensmittel" role="radio" aria-checked="true">Alle</button>
+            <button type="button" class="chip" data-diet="vegan" role="radio" aria-checked="false">Vegan</button>
+            <button type="button" class="chip" data-diet="vegetarisch" role="radio" aria-checked="false">Vegetarisch</button>
+            <button type="button" class="chip" data-diet="pescetarisch" role="radio" aria-checked="false">Pescetarisch</button>
+            <button type="button" class="chip" data-diet="carnivor" title="Nur tierische Lebensmittel (Fleisch, Fisch, Eier)" role="radio" aria-checked="false">Carnivor</button>
+          </div>
+          <div class="filters" role="group" aria-label="Eigenschaften">
+            <span class="chip-lbl">Eigenschaften</span>
+            <button type="button" class="chip" data-tag="whole_food" title="Nur wenig verarbeitete Lebensmittel" aria-pressed="false">Whole Food</button>
+            <button type="button" class="chip" data-tag="supplement" aria-pressed="false">Supplement</button>
+            <button type="button" class="chip" data-tag="verarbeitet" aria-pressed="false">Verarbeitet</button>
+            <button type="button" class="chip" data-tag="laktose" title="Ohne Laktose (Lebensmittel mit Laktose ausblenden)" aria-pressed="false">Laktosefrei</button>
+            <button type="button" class="chip" data-tag="gluten" title="Ohne Gluten (Lebensmittel mit Gluten ausblenden)" aria-pressed="false">Glutenfrei</button>
+          </div>
+        </div>
+        <div class="db-view-controls">
+          <div class="db-view-row">
+            <label class="db-page-size" for="dbPageSize">Zeilen
+              <select id="dbPageSize">
+                <option value="24">24</option>
+                <option value="48" selected>48</option>
+                <option value="96">96</option>
+              </select>
+            </label>
+            <label class="switch-wrap" title="Lebensmittel nach Kategorien gruppieren">
+              <span>Nach Kategorien</span>
+              <span class="switch"><input type="checkbox" id="groupByCat"><span class="slider"></span></span>
+            </label>
+          </div>
+          <div class="db-view-row">
+            <div class="db-pagination" id="dbPaginationTop" aria-label="Seitennavigation oben"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll database-scroll"><table id="dbTable"></table></div>
+      <div class="db-pagination" id="dbPaginationBottom" aria-label="Seitennavigation unten"></div>
+    </div>
+  </section>
+
+  <section id="tab-profile" class="tab" role="tabpanel" aria-labelledby="tab-btn-profile">
+    <div class="tab-heading">
+      <h2>Mein Profil</h2>
+      <p>Aus Körperdaten, Aktivität und Präferenzen kommen Tagesbedarf und Lebensmittel-Pool. Speichert nur lokal auf diesem Gerät.</p>
+    </div>
+    <div id="profileForm"></div>
+    <div class="profile-summary" id="profileSummary"></div>
+    <div class="bar">
+      <button type="button" class="ghost" id="resetProfile" title="Körper, Ziel, Protein, Ernährungsstil und Eigenschaften auf Werkseinstellung">Auf Standard zurücksetzen</button>
+    </div>
+    <p class="muted" style="max-width:720px;margin:0 0 14px">Angaben zu Körper, Ziel, Ernährungsstil und Eigenschaften.<br>
+      Daraus entstehen die <b>Anforderungen</b> und der Lebensmittel-Pool für den <b>Optimalen Plan</b>.<br>
+      Die Daten bleiben lokal auf deinem Gerät.</p>
+  </section>
+
+  <section id="tab-req" class="tab" role="tabpanel" aria-labelledby="tab-btn-req">
+    <div class="tab-heading">
+      <h2>Anforderungen</h2>
+      <p>Mindest- und Höchstwert pro Nährwert. Die Vorschläge aus dem Profil kannst du jederzeit überschreiben.</p>
+    </div>
+    <div class="req-grid" id="reqGrid"></div>
+    <div class="req-pattern" id="reqPattern"></div>
+      <div class="bar">
+      <button class="ghost" id="resetReq">Aus Mein Profil neu laden</button>
+      <span class="muted" id="reqStatus"></span>
+    </div>
+    <p class="muted">Tagesmengen aus <b>Mein Profil</b><br>Min. und/oder Max. pro Nährwert. Beide Werte leer = keine Schranke.<br>Eigene Änderungen werden lokal auf deinem Gerät gespeichert; „Aus Mein Profil neu laden“ verwirft sie.</p>
+  </section>
+
+  <section id="tab-plan" class="tab" role="tabpanel" aria-labelledby="tab-btn-plan">
+    <div class="tab-heading">
+      <h2>Optimaler Plan</h2>
+      <p>Findet im Lebensmittel-Pool die günstigste Kombination, die deine Nährwertgrenzen erfüllt.</p>
+    </div>
+    <div class="bar">
+      <button class="act" id="calc">Optimalen Plan berechnen</button>
+      <span class="bar-spacer"></span>
+      <label class="switch-wrap" title="Mengen nur als ganze g / ml / Stück / Tropfen (Integer-LP)">
+        <span>Nur ganze Mengen</span>
+        <span class="switch"><input type="checkbox" id="integerAmounts"><span class="slider"></span></span>
+      </label>
+    </div>
+    <p class="muted" id="planPoolInfo" style="margin:0 0 12px">Der Lebensmittel-Pool stammt aus <b>Mein Profil</b>.</p>
+    <div id="planOut"><p class="muted">Noch nicht berechnet.</p></div>
+  </section>
+</main>
+
+<dialog id="foodModal">
+  <div class="bar" style="justify-content:space-between; margin-bottom:8px">
+    <b id="fmTitle"></b>
+    <button class="ghost" id="fmClose">✕</button>
+  </div>
+  <div class="scroll" style="max-height:70vh"><table id="fmTable"></table></div>
+</dialog>
+
+<dialog id="addFoodModal">
+  <div class="af-head">
+    <b>Lebensmittel hinzufügen</b>
+    <button type="button" class="ghost" id="afClose" aria-label="Schließen">✕</button>
+  </div>
+  <p class="af-err" id="afErr"></p>
+  <div class="af-body" id="afBody"></div>
+  <div class="af-foot">
+    <button type="button" class="ghost" id="afCancel">Abbrechen</button>
+    <button type="button" class="act" id="afSave">Hinzufügen</button>
+  </div>
+</dialog>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">sms<span>.</span></a>
+      <p>Persönliche Finance-Tools, Dashboards und Programmierprojekte von Simon Stark. Stetig im Aufbau.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="/projekte">Projekte</a></li>
+        <li><a href="/downloads">Downloads</a></li>
+        <li><a href="/projekt-pipeline">Projekt-Pipeline</a></li>
+        <li><a href="/vision">Vision</a></li>
+        <li><a href="/wissen">Wissen</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Rechtliches</h5>
+      <ul>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Simon Stark</span>
+    <a href="https://github.com/simons-0427" target="_blank" rel="noopener noreferrer">github.com/simons-0427</a>
+  </div>
+</footer>
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://smstark-projekt.de/ernaerung/#app",
+  "name": "Ideale Ernährung",
+  "url": "https://smstark-projekt.de/ernaerung/",
+  "description": "Browserbasierter Ernährungsplaner mit editierbarer Lebensmitteldatenbank, persönlichen Nährwertzielen und Kostenoptimierung.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "JavaScript aktiviert",
+  "isAccessibleForFree": true,
+  "inLanguage": "de-DE",
+  "author": {
+    "@type": "Person",
+    "@id": "https://smstark-projekt.de/#person",
+    "name": "Simon Stark",
+    "url": "https://smstark-projekt.de/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://smstark-projekt.de/#website",
+    "name": "SMStark Projekt",
+    "url": "https://smstark-projekt.de/"
+  },
+  "featureList": [
+    "Editierbare Lebensmitteldatenbank",
+    "Persönliche Nährwertziele",
+    "Kostenoptimierter Ernährungsplan",
+    "Lokale Speicherung im Browser"
+  ]
+}
+</script>
+  <script src="solver.js"></script>
+  <script src="database.js"></script>
+  <script src="requirements.js"></script>
+  <script>
+"use strict";
+// v6: diet tags vegan ⊂ vegetarisch ⊂ pescetarisch ⊂ omnivor
+// v11: + carnivor, laktose (contains), gluten (contains)
+// v12: Mein Profil → auto requirements + plan pool filters
+// v13: Standardprofil 18 J / 80 kg / 188 cm, Protein 1.0 / 2.0 g/kg
+const LS_FOODS = "ie_foods_v11", LS_REQ = "ie_req_v4", LS_PROFILE = "ie_profile_v2";
+const LS_REQ_LEGACY = "ie_req";
+const DB_VERSION = 13;
+let PARAMS = [];        // ["Energy (cal)", ...]
+let foods = [];         // [{name, unit, price_per_100, category, tags, nutrients}]
+let req = {};           // { "Energy (cal)": {min:number|null, max:number|null} }
+let reqMeta = null;     // loaded from requirements.json / requirements.js
+let userProfile = null; // body + goals + diet pattern (see defaultUserProfile)
+let reqCustom = false;  // true when user edited values away from profile defaults
+let dbQuery = "";       // Suchfilter für die Datenbank (lowercase)
+let sortKey = null, sortDir = 1;   // Spalten-Sortierung: null=Original, sonst "name"/"price"/Param-Key
+let SEED = [];          // original database seed, for "Reset"
+let dbDiet = "all";     // Ernährungsstil: all | vegan | vegetarisch | pescetarisch | carnivor
+let dbTags = new Set(); // Eigenschaften (AND): whole_food, supplement, verarbeitet, laktose, gluten
+let groupByCategory = false; // default: flat list; toggle in UI
+let dbPage = 1;
+let dbPageSize = 48;
+let dbSearchTimer = null;
+let saveFoodsTimer = null;
+let foodsDirty = false;
+const dbSearchCache = new WeakMap();
+const dbCollator = new Intl.Collator("de", { sensitivity: "base", numeric: true });
+let integerAmounts = false;  // default: continuous LP; on = integer g/ml/Stück/Tropfen
+
+const PROTEIN_PRESET_G_KG = { normal: 1.0, erhoeht: 2.0 };
+const PROTEIN_G_KG_MIN = 0.6;
+const PROTEIN_G_KG_MAX = 2.5;
+const KIDNEY_CAP_G_KG = 2.0;
+const GOAL_KCAL_OFFSET = { halten: 0, abnehmen: -400, zunehmen: 300 };
+const ACTIVITY_PAL = {
+  nicht_aktiv: 1.2,
+  etwas_aktiv: 1.375,
+  aktiv: 1.55,
+  sehr_aktiv: 1.725,
+};
+const GOAL_LABEL = { halten: "Halten", abnehmen: "Abnehmen", zunehmen: "Zunehmen" };
+const PROTEIN_PRESET_LABEL = { normal: "Normal", erhoeht: "Erhöht", custom: "Custom" };
+
+function defaultUserProfile() {
+  return {
+    gender: "maennlich",
+    age: 18,
+    weight_kg: 80,
+    height_cm: 188,
+    activity: "aktiv",
+    goal: "halten",
+    protein_preset: "erhoeht",
+    protein_g_per_kg: PROTEIN_PRESET_G_KG.erhoeht,
+    kidney_protein_cap: false,
+    diet: "all",
+    avoid_laktose: false,
+    avoid_gluten: false,
+    tag_whole_food: false,
+    tag_supplement: false,
+    tag_verarbeitet: false,
+  };
+}
+
+const CATEGORY_ORDER = [
+  "getreide", "huelsenfruechte", "gemuese", "obst", "nuesse_samen", "oele_fette",
+  "milch", "eier", "fleisch", "fisch", "wuerze", "suessung", "getraenke",
+  "verarbeitet", "supplements",
+];
+const CATEGORY_LABEL = {
+  getreide: "Getreide & Stärke",
+  huelsenfruechte: "Hülsenfrüchte & Soja",
+  gemuese: "Gemüse",
+  obst: "Obst",
+  nuesse_samen: "Nüsse & Samen",
+  oele_fette: "Öle & Fette",
+  milch: "Milch & Alternativen",
+  eier: "Eier",
+  fleisch: "Fleisch & Wurst",
+  fisch: "Fisch & Meeresfrüchte",
+  wuerze: "Gewürze & Würze",
+  suessung: "Süßung",
+  getraenke: "Getränke",
+  verarbeitet: "Verarbeitet / Fertig",
+  supplements: "Supplements",
+};
+const TAG_LABEL = {
+  vegan: "Vegan", vegetarisch: "Vegetarisch", pescetarisch: "Pescetarisch",
+  omnivor: "Omnivor", carnivor: "Carnivor", whole_food: "Whole Food",
+  supplement: "Supplement", verarbeitet: "Verarbeitet",
+  laktose: "Laktose", gluten: "Gluten",
+};
+/** Eigenschaften: when these filters are active, foods that HAVE the tag are excluded (intolerance). */
+const AVOID_TAGS = new Set(["laktose", "gluten"]);
+/** Ernährungsstil-Tags am Lebensmittel (Hierarchie vegan ⊂ vegetarisch ⊂ pescetarisch ⊂ omnivor). */
+const DIET_TAGS = ["vegan", "vegetarisch", "pescetarisch", "omnivor", "carnivor"];
+/** Eigenschafts-Tags (kein Ernährungsstil-Modus). */
+const PROPERTY_TAGS = ["whole_food", "supplement", "verarbeitet", "laktose", "gluten"];
+const DIET_LABEL = {
+  all: "Alle", vegan: "Vegan", vegetarisch: "Vegetarisch",
+  pescetarisch: "Pescetarisch", omnivor: "Omnivor", carnivor: "Carnivor",
+};
+
+// Empfohlene Tagesmengen: Quelle = requirements.json / requirements.js (Profile).
+// Hinweis: Chlorid/Biotin sind in der DB dünn abgedeckt ,  Min-Werte können den Plan hart einschränken.
+function ensureReqMeta() {
+  if (reqMeta) return reqMeta;
+  // Minimaler Fallback, falls Datei fehlt
+  reqMeta = {
+    version: 1,
+    defaults: { gender: "maennlich", activity: "aktiv", protein: "erhoeht" },
+    gender: {
+      maennlich: { label: "Männlich", nutrients: {} },
+      weiblich: { label: "Weiblich", nutrients: {} },
+    },
+    activity: {
+      nicht_aktiv: { label: "Nicht aktiv", energy: { maennlich: { min: 2100, max: 2300 }, weiblich: { min: 1600, max: 1800 } } },
+      etwas_aktiv: { label: "Etwas aktiv", energy: { maennlich: { min: 2500, max: 2700 }, weiblich: { min: 1900, max: 2100 } } },
+      aktiv: { label: "Aktiv", energy: { maennlich: { min: 2900, max: 3100 }, weiblich: { min: 2300, max: 2500 } } },
+      sehr_aktiv: { label: "Sehr aktiv", energy: { maennlich: { min: 3400, max: 3600 }, weiblich: { min: 2800, max: 3000 } } },
+    },
+    protein: {
+      normal: { label: "Normaler Eiweißbedarf", values: { maennlich: 70, weiblich: 55 } },
+      erhoeht: { label: "Erhöhter Eiweißbedarf", values: { maennlich: 160, weiblich: 130 } },
+    },
+    common: {},
+    macros: {
+      fat_kcal_fraction: { min: 0.2, max: 0.3 },
+      carb_kcal_fraction_min: 0.45,
+      fat_g_floor: { min: 40, max: 55 },
+      carb_g_floor: 200,
+    },
+  };
+  return reqMeta;
+}
+
+function normalizeBound(v) {
+  return v == null || v === "" ? null : +v;
+}
+
+function clamp(n, lo, hi) {
+  return Math.min(hi, Math.max(lo, n));
+}
+
+function ensureUserProfile() {
+  if (!userProfile) userProfile = defaultUserProfile();
+  return userProfile;
+}
+
+/** Mifflin-St. Jeor BMR (kcal/day). */
+function calcBmr(p) {
+  const w = +p.weight_kg || 70;
+  const h = +p.height_cm || 170;
+  const a = +p.age || 30;
+  if (p.gender === "weiblich") return 10 * w + 6.25 * h - 5 * a - 161;
+  return 10 * w + 6.25 * h - 5 * a + 5;
+}
+
+/** Target daily energy mid ± band from BMR × PAL + goal; fallback to activity table. */
+function calcEnergyBand(p) {
+  const meta = ensureReqMeta();
+  const gender = meta.gender[p.gender] ? p.gender : "maennlich";
+  const activity = meta.activity[p.activity] ? p.activity : "aktiv";
+  const pal = ACTIVITY_PAL[activity] || 1.55;
+  const goalOff = GOAL_KCAL_OFFSET[p.goal] != null ? GOAL_KCAL_OFFSET[p.goal] : 0;
+  const w = +p.weight_kg, h = +p.height_cm, a = +p.age;
+  if (w > 0 && h > 0 && a > 0) {
+    const tdee = calcBmr(p) * pal + goalOff;
+    const mid = Math.round(tdee / 50) * 50;
+    return { min: Math.max(1200, mid - 100), max: Math.max(1300, mid + 100) };
+  }
+  const table = (meta.activity[activity].energy[gender]
+    || meta.activity[activity].energy.maennlich
+    || { min: 2500, max: 2700 });
+  return {
+    min: Math.max(1200, table.min + goalOff),
+    max: Math.max(1300, table.max + goalOff),
+  };
+}
+
+function proteinGramsFromProfile(p) {
+  const w = +p.weight_kg || 70;
+  let gPerKg = +p.protein_g_per_kg;
+  if (!(gPerKg > 0)) gPerKg = PROTEIN_PRESET_G_KG[p.protein_preset] || PROTEIN_PRESET_G_KG.normal;
+  if (p.kidney_protein_cap) gPerKg = Math.min(gPerKg, KIDNEY_CAP_G_KG);
+  gPerKg = clamp(gPerKg, PROTEIN_G_KG_MIN, PROTEIN_G_KG_MAX);
+  const minG = Math.round(gPerKg * w);
+  const maxG = p.kidney_protein_cap ? Math.round(KIDNEY_CAP_G_KG * w) : null;
+  return { min: minG, max: maxG, gPerKg };
+}
+
+function syncProteinPreset(p) {
+  const g = Math.round((+p.protein_g_per_kg || 0) * 100) / 100;
+  if (Math.abs(g - PROTEIN_PRESET_G_KG.normal) < 0.05) p.protein_preset = "normal";
+  else if (Math.abs(g - PROTEIN_PRESET_G_KG.erhoeht) < 0.05) p.protein_preset = "erhoeht";
+  else p.protein_preset = "custom";
+}
+
+/** Active plan-pool tag filters from Mein Profil (Set of tag ids). */
+function profilePlanTags(p) {
+  p = p || ensureUserProfile();
+  const s = new Set();
+  if (p.avoid_laktose) s.add("laktose");
+  if (p.avoid_gluten) s.add("gluten");
+  if (p.tag_whole_food) s.add("whole_food");
+  if (p.tag_supplement) s.add("supplement");
+  if (p.tag_verarbeitet) s.add("verarbeitet");
+  // carnivor as diet mode, not tag toggle ,  unless diet===carnivor handled in matchesDiet
+  return s;
+}
+
+/** Build min/max map from Mein Profil + requirements meta. */
+function buildProfileReq(profile) {
+  const p = profile || ensureUserProfile();
+  const meta = ensureReqMeta();
+  const gender = meta.gender[p.gender] ? p.gender : (meta.defaults.gender || "maennlich");
+  const { min: eMin, max: eMax } = calcEnergyBand(p);
+  const macros = meta.macros || {};
+  const fatFrac = macros.fat_kcal_fraction || { min: 0.2, max: 0.3 };
+  const fatFloor = macros.fat_g_floor || { min: 40, max: 55 };
+  const carbFracMin = macros.carb_kcal_fraction_min != null ? macros.carb_kcal_fraction_min : 0.45;
+  const carbFloor = macros.carb_g_floor != null ? macros.carb_g_floor : 200;
+  const fatMin = Math.max(fatFloor.min || 0, Math.round((eMin * fatFrac.min) / 9));
+  const fatMax = Math.max(fatMin, Math.round((eMax * fatFrac.max) / 9));
+  const carbMin = Math.max(carbFloor, Math.round((eMin * carbFracMin) / 4));
+  const prot = proteinGramsFromProfile(p);
+
+  const o = {
+    "Energy (cal)": { min: eMin, max: eMax },
+    "Total Fat (g)": { min: fatMin, max: fatMax },
+    "Saturated Fat (g)": { min: null, max: null },
+    "Total Carbohydrate (g)": { min: carbMin, max: null },
+    "Total sugars (g)": { min: null, max: null },
+    "Dietary Fibre (g)": { min: null, max: null },
+    "Protein (g)": { min: prot.min, max: prot.max },
+  };
+  const apply = (src) => {
+    if (!src) return;
+    for (const [key, b] of Object.entries(src)) {
+      o[key] = { min: normalizeBound(b.min), max: normalizeBound(b.max) };
+    }
+  };
+  apply(meta.common);
+  apply(meta.gender[gender]?.nutrients);
+  o["Energy (cal)"] = { min: eMin, max: eMax };
+  o["Total Fat (g)"] = { min: fatMin, max: fatMax };
+  o["Total Carbohydrate (g)"] = { min: carbMin, max: null };
+  o["Protein (g)"] = { min: prot.min, max: prot.max };
+
+  (PARAMS.length ? PARAMS : Object.keys(o)).forEach(key => {
+    if (!o[key]) o[key] = { min: null, max: null };
+  });
+  return o;
+}
+
+/** Kanonische Reihenfolge wie parameter.md ,  Makros oben. */
+const PARAM_ORDER_HEAD = [
+  "Energy (cal)",
+  "Total Fat (g)",
+  "Saturated Fat (g)",
+  "Total Carbohydrate (g)",
+  "Total sugars (g)",
+  "Dietary Fibre (g)",
+  "Protein (g)",
+];
+function orderParams(list) {
+  const set = new Set(list);
+  const head = PARAM_ORDER_HEAD.filter(p => set.has(p));
+  const headSet = new Set(head);
+  const rest = list.filter(p => !headSet.has(p));
+  return head.concat(rest);
+}
+
+function cloneDefaults() {
+  return buildProfileReq(ensureUserProfile());
+}
+
+function profileLabel() {
+  const p = ensureUserProfile();
+  const meta = ensureReqMeta();
+  const g = meta.gender[p.gender]?.label || p.gender;
+  const a = meta.activity[p.activity]?.label || p.activity;
+  const goal = GOAL_LABEL[p.goal] || p.goal;
+  const prot = proteinGramsFromProfile(p);
+  return `${g} | ${a} | ${goal} | ${prot.min} g Protein`;
+}
+
+function profilePatternLabel(p) {
+  p = p || ensureUserProfile();
+  const parts = [];
+  if (p.diet && p.diet !== "all") parts.push(DIET_LABEL[p.diet] || p.diet);
+  if (p.avoid_laktose) parts.push("laktosefrei");
+  if (p.avoid_gluten) parts.push("glutenfrei");
+  if (p.tag_whole_food) parts.push("whole foods");
+  if (p.tag_supplement) parts.push("supplements");
+  if (p.tag_verarbeitet) parts.push("verarbeitet");
+  return parts.length ? parts.join(" + ") : "alle Lebensmittel";
+}
+
+// ---------- loading ----------
+async function boot() {
+  // 1) Food DB + requirements: prefer embedded .js (works with file://), else fetch .json
+  let foodSeed = Array.isArray(window.FOOD_DATABASE) ? window.FOOD_DATABASE : null;
+  if (window.REQUIREMENTS && typeof window.REQUIREMENTS === "object") {
+    reqMeta = window.REQUIREMENTS;
+  }
+  let paramTxt = null;
+
+  try {
+    const [pTxt, fJson, rJson] = await Promise.all([
+      fetch("parameter.md").then(r => { if (!r.ok) throw 0; return r.text(); }),
+      foodSeed ? Promise.resolve(null) : fetch("database.json").then(r => { if (!r.ok) throw 0; return r.json(); }),
+      reqMeta ? Promise.resolve(null) : fetch("requirements.json").then(r => { if (!r.ok) throw 0; return r.json(); })
+    ]);
+    paramTxt = pTxt;
+    if (!foodSeed && fJson) foodSeed = fJson;
+    if (!reqMeta && rJson) reqMeta = rJson;
+  } catch (e) {
+    // file:// often blocks fetch; embedded DB / requirements may still be available
+  }
+
+  if (!foodSeed) {
+    document.getElementById("banner").style.display = "block";
+    wireFilePickers();
+    return;
+  }
+
+  ensureReqMeta();
+  ensureUserProfile();
+  // parameter.md optional if profile builder already lists every nutrient
+  PARAMS = orderParams(paramTxt ? parseParams(paramTxt) : Object.keys(buildProfileReq(ensureUserProfile())));
+  initFoods(foodSeed);
+  initProfile();
+  initReq();
+  render();
+}
+function parseParams(txt) {
+  return txt.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+}
+// Bezugsgrößen: g/ml → Preis+Nährwerte pro 100; stk/tr (Supplements) → pro 1
+const UNIT_META = {
+  g:   { short: "g",      label: "100 g",      ref: 100, small: "mg",  smallFactor: 1000 },
+  ml:  { short: "ml",     label: "100 ml",     ref: 100, small: "µl",  smallFactor: 1000 },
+  stk: { short: "Stück",  label: "1 Stück",    ref: 1,   small: null,  smallFactor: 1 },
+  tr:  { short: "Tropfen", label: "1 Tropfen",  ref: 1,   small: null,  smallFactor: 1 },
+};
+function normalizeUnit(u) {
+  if (u === "ml" || u === "stk" || u === "tr" || u === "g") return u;
+  if (u === "stück" || u === "stueck" || u === "tabl") return "stk";
+  if (u === "tropfen") return "tr";
+  return "g";
+}
+
+/** Normalize legacy rows → { unit, price_per_100, category, tags, nutrients } */
+function normalizeFood(f) {
+  const unit = normalizeUnit(f.unit);
+  let price = f.price_per_100;
+  if (price == null && f.price_per_100g != null) price = f.price_per_100g;
+  let tags = Array.isArray(f.tags) ? f.tags.slice() : [];
+  tags = expandDietTags(tags, f.category);
+  return {
+    name: f.name || "",
+    unit,
+    price_per_100: price == null ? 0 : +price,
+    category: f.category && CATEGORY_LABEL[f.category] ? f.category : "verarbeitet",
+    tags,
+    nutrients: f.nutrients && typeof f.nutrients === "object" ? { ...f.nutrients } : {},
+  };
+}
+/** Diet hierarchy +: every supplement is also verarbeitet (not whole_food). */
+function expandDietTags(tags, category) {
+  const s = new Set(Array.isArray(tags) ? tags : []);
+  if (category === "fleisch") {
+    s.delete("vegan"); s.delete("vegetarisch"); s.delete("pescetarisch");
+    s.add("omnivor");
+  } else if (category === "fisch") {
+    s.delete("vegan"); s.delete("vegetarisch");
+    s.add("pescetarisch"); s.add("omnivor");
+  } else if (s.has("vegan")) {
+    s.add("vegetarisch"); s.add("pescetarisch"); s.add("omnivor");
+  } else if (s.has("vegetarisch")) {
+    s.add("pescetarisch"); s.add("omnivor");
+  } else if (s.has("pescetarisch")) {
+    s.add("omnivor");
+  } else {
+    s.add("omnivor");
+  }
+  if (category === "supplements" || s.has("supplement")) {
+    s.add("supplement");
+    s.add("verarbeitet");
+    s.delete("whole_food");
+  }
+  if (category === "verarbeitet") {
+    s.add("verarbeitet");
+    s.delete("whole_food");
+  }
+  if (s.has("verarbeitet") && s.has("whole_food")) s.delete("whole_food");
+  // animal categories are carnivore-compatible
+  if (category === "fleisch" || category === "fisch" || category === "eier") s.add("carnivor");
+  const order = [
+    "vegan", "vegetarisch", "pescetarisch", "omnivor", "carnivor",
+    "whole_food", "supplement", "verarbeitet", "laktose", "gluten",
+  ];
+  const out = order.filter(t => s.has(t));
+  for (const t of s) if (!out.includes(t)) out.push(t);
+  return out;
+}
+function foodUnit(f) { return normalizeUnit(f && f.unit); }
+function foodPrice(f) {
+  if (!f) return 0;
+  if (f.price_per_100 != null) return f.price_per_100 || 0;
+  return f.price_per_100g || 0;
+}
+function unitMeta(u) { return UNIT_META[normalizeUnit(u)] || UNIT_META.g; }
+function unitLabel(u) { return unitMeta(u).short; }
+/** Human label for the reference batch (100 g or 1 Stück …) */
+function unitPer100(u) { return unitMeta(u).label; }
+/** How many physical units the stored price/nutrients refer to */
+function unitRef(u) { return unitMeta(u).ref || 100; }
+function foodRef(f) { return unitRef(foodUnit(f)); }
+function priceHeader(u) { return `Preis/${unitPer100(u)} (€)`; }
+function foodTags(f) { return Array.isArray(f?.tags) ? f.tags : []; }
+function hasTag(f, t) { return foodTags(f).includes(t); }
+function matchesDiet(f, diet) {
+  if (diet === "all") return true;
+  if (diet === "vegan") return hasTag(f, "vegan");
+  if (diet === "vegetarisch") return hasTag(f, "vegetarisch");
+  if (diet === "pescetarisch") return hasTag(f, "pescetarisch");
+  if (diet === "omnivor") return hasTag(f, "omnivor"); // praktisch alle
+  if (diet === "carnivor") return hasTag(f, "carnivor");
+  return true;
+}
+/** Tag filters: most require the tag; laktose/gluten mean "ohne …" (exclude tagged foods). */
+function matchesTagFilters(f, activeTags) {
+  for (const t of activeTags) {
+    if (AVOID_TAGS.has(t)) {
+      if (hasTag(f, t)) return false;
+    } else if (!hasTag(f, t)) {
+      return false;
+    }
+  }
+  return true;
+}
+function tagFilterLabel(t) {
+  if (t === "laktose") return "laktosefrei";
+  if (t === "gluten") return "glutenfrei";
+  return TAG_LABEL[t] || t;
+}
+function foodsForPlan() {
+  const p = ensureUserProfile();
+  const tags = profilePlanTags(p);
+  return foods.filter(f => {
+    if (!matchesDiet(f, p.diet || "all")) return false;
+    return matchesTagFilters(f, tags);
+  });
+}
+function planFilterLabel() {
+  return profilePatternLabel(ensureUserProfile());
+}
+function updatePlanPoolInfo() {
+  const el = document.getElementById("planPoolInfo");
+  if (!el) return;
+  const n = foodsForPlan().length;
+  el.innerHTML = `Pool aus <b>Mein Profil</b>: <b>${esc(planFilterLabel())}</b> | ${n} Lebensmittel`;
+}
+
+function initFoods(seed) {
+  SEED = JSON.parse(JSON.stringify(seed)).map(normalizeFood);
+  const saved = localStorage.getItem(LS_FOODS);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length >= Math.min(50, seed.length * 0.5)) {
+        const hasCats = parsed.some(f => f.category && Array.isArray(f.tags));
+        if (hasCats) {
+          foods = parsed.map(normalizeFood);
+          return;
+        }
+      }
+    } catch (_) { /* fall through */ }
+  }
+  foods = JSON.parse(JSON.stringify(SEED));
+  saveFoods();
+}
+function initProfile() {
+  ensureReqMeta();
+  const base = defaultUserProfile();
+  // requirements.json defaults only for gender/activity (body & g/kg come from defaultUserProfile)
+  const d = reqMeta.defaults || {};
+  if (d.gender && reqMeta.gender[d.gender]) base.gender = d.gender;
+  if (d.activity && reqMeta.activity[d.activity]) base.activity = d.activity;
+  // protein preset from meta, but always map to current g/kg table (1.0 / 2.0)
+  if (d.protein === "normal" || d.protein === "erhoeht") {
+    base.protein_preset = d.protein;
+    base.protein_g_per_kg = PROTEIN_PRESET_G_KG[d.protein];
+  }
+
+  let saved = null;
+  try {
+    const raw = localStorage.getItem(LS_PROFILE);
+    if (raw) saved = JSON.parse(raw);
+  } catch (_) { saved = null; }
+
+  // Do not migrate old body/protein from ie_profile_v1 / req chips , 
+  // new default body (18 / 80 / 188) and g/kg (1.0 / 2.0) take effect on version bump.
+  // Only keep diet-pattern flags if present on same key version.
+  userProfile = { ...base, ...(saved && typeof saved === "object" ? saved : {}) };
+  // If an older preset value is stored (0.8 / 1.6), snap to current preset table
+  if (userProfile.protein_preset === "normal") {
+    userProfile.protein_g_per_kg = PROTEIN_PRESET_G_KG.normal;
+  } else if (userProfile.protein_preset === "erhoeht") {
+    userProfile.protein_g_per_kg = PROTEIN_PRESET_G_KG.erhoeht;
+  }
+  // sanitize
+  if (!reqMeta.gender[userProfile.gender]) userProfile.gender = base.gender;
+  if (!reqMeta.activity[userProfile.activity]) userProfile.activity = base.activity;
+  if (!GOAL_KCAL_OFFSET.hasOwnProperty(userProfile.goal)) userProfile.goal = "halten";
+  userProfile.age = clamp(+userProfile.age || base.age, 14, 100);
+  userProfile.weight_kg = clamp(+userProfile.weight_kg || base.weight_kg, 30, 300);
+  userProfile.height_cm = clamp(+userProfile.height_cm || base.height_cm, 120, 230);
+  userProfile.protein_g_per_kg = clamp(+userProfile.protein_g_per_kg || PROTEIN_PRESET_G_KG.erhoeht,
+    PROTEIN_G_KG_MIN, PROTEIN_G_KG_MAX);
+  if (userProfile.kidney_protein_cap) {
+    userProfile.protein_g_per_kg = Math.min(userProfile.protein_g_per_kg, KIDNEY_CAP_G_KG);
+  }
+  syncProteinPreset(userProfile);
+  const diets = ["all", "vegan", "vegetarisch", "pescetarisch", "carnivor"];
+  if (!diets.includes(userProfile.diet)) userProfile.diet = "all";
+  userProfile.kidney_protein_cap = !!userProfile.kidney_protein_cap;
+  userProfile.avoid_laktose = !!userProfile.avoid_laktose;
+  userProfile.avoid_gluten = !!userProfile.avoid_gluten;
+  userProfile.tag_whole_food = !!userProfile.tag_whole_food;
+  userProfile.tag_supplement = !!userProfile.tag_supplement;
+  userProfile.tag_verarbeitet = !!userProfile.tag_verarbeitet;
+  saveProfile();
+}
+
+function saveProfile() {
+  localStorage.setItem(LS_PROFILE, JSON.stringify(ensureUserProfile()));
+}
+
+function initReq() {
+  ensureReqMeta();
+  ensureUserProfile();
+  reqCustom = false;
+
+  let saved = null;
+  try {
+    const raw = localStorage.getItem(LS_REQ);
+    if (raw) saved = JSON.parse(raw);
+  } catch (_) { saved = null; }
+
+  if (!saved) {
+    try {
+      const legacy = localStorage.getItem(LS_REQ_LEGACY) || localStorage.getItem("ie_req_v2");
+      if (legacy) {
+        const map = JSON.parse(legacy);
+        if (map && typeof map === "object") {
+          if (map.custom && map.req) saved = map;
+          else if (!map.profile && !map.req) saved = { custom: true, req: map };
+        }
+      }
+    } catch (_) { /* ignore */ }
+  }
+
+  if (saved && saved.custom && saved.req && typeof saved.req === "object") {
+    req = cloneReqMap(saved.req);
+    reqCustom = true;
+  } else {
+    req = cloneDefaults();
+    reqCustom = false;
+  }
+  PARAMS.forEach(p => { if (!req[p]) req[p] = { min: null, max: null }; });
+}
+function persistFoods() {
+  if (!foodsDirty) return;
+  if (saveFoodsTimer) {
+    clearTimeout(saveFoodsTimer);
+    saveFoodsTimer = null;
+  }
+  localStorage.setItem(LS_FOODS, JSON.stringify(foods));
+  foodsDirty = false;
+}
+function saveFoods() {
+  foodsDirty = true;
+  persistFoods();
+}
+function scheduleSaveFoods() {
+  foodsDirty = true;
+  if (saveFoodsTimer) clearTimeout(saveFoodsTimer);
+  saveFoodsTimer = setTimeout(persistFoods, 180);
+}
+window.addEventListener("pagehide", persistFoods);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") persistFoods();
+});
+function saveReq() {
+  localStorage.setItem(LS_REQ, JSON.stringify({
+    custom: reqCustom,
+    req: req,
+  }));
+}
+
+/** Apply Mein Profil → requirements (always regenerates numbers). */
+function applyProfileFromUser(reloadValues) {
+  if (reloadValues !== false) {
+    req = cloneDefaults();
+    reqCustom = false;
+  }
+  saveProfile();
+  saveReq();
+  renderProfile();
+  renderReq();
+  updatePlanPoolInfo();
+}
+
+/** Reset body, goals, protein and diet pattern to defaultUserProfile(). */
+function resetUserProfileToDefault() {
+  userProfile = defaultUserProfile();
+  applyProfileFromUser(true);
+}
+
+function wireFilePickers() {
+  let gotP = null, gotF = null, gotR = null;
+  const done = () => {
+    if (gotR) reqMeta = gotR;
+    if (gotP && gotF) {
+      ensureReqMeta();
+      PARAMS = orderParams(parseParams(gotP));
+      initFoods(gotF);
+      initProfile();
+      initReq();
+      render();
+      document.getElementById("banner").style.display = "none";
+    }
+  };
+  document.getElementById("pickParams").onchange = e => {
+    e.target.files[0].text().then(t => { gotP = t; done(); });
+  };
+  document.getElementById("pickFoods").onchange = e => {
+    e.target.files[0].text().then(t => { gotF = JSON.parse(t); done(); });
+  };
+  const pickReq = document.getElementById("pickReq");
+  if (pickReq) {
+    pickReq.onchange = e => {
+      e.target.files[0].text().then(t => { gotR = JSON.parse(t); done(); });
+    };
+  }
+}
+
+// ---------- tabs ----------
+const tabButtons = [...document.querySelectorAll(".app-tabs button[data-tab]")];
+function setActiveTab(button) {
+  tabButtons.forEach(x => {
+    const active = x === button;
+    x.classList.toggle("active", active);
+    x.setAttribute("aria-selected", active ? "true" : "false");
+    x.tabIndex = active ? 0 : -1;
+  });
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  document.getElementById("tab-" + button.dataset.tab)?.classList.add("active");
+}
+tabButtons.forEach((button, index) => {
+  button.onclick = () => setActiveTab(button);
+  button.onkeydown = event => {
+    let next = null;
+    if (event.key === "ArrowRight") next = (index + 1) % tabButtons.length;
+    if (event.key === "ArrowLeft") next = (index - 1 + tabButtons.length) % tabButtons.length;
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = tabButtons.length - 1;
+    if (next === null) return;
+    event.preventDefault();
+    setActiveTab(tabButtons[next]);
+    tabButtons[next].focus();
+  };
+});
+if (tabButtons.length) setActiveTab(tabButtons.find(button => button.classList.contains("active")) || tabButtons[0]);
+
+// ---------- global mobile navigation ----------
+const navToggle = document.querySelector(".nav-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+if (navToggle && mobileMenu) {
+  navToggle.onclick = () => {
+    const open = navToggle.classList.toggle("open");
+    mobileMenu.classList.toggle("open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+  };
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.onclick = () => {
+      navToggle.classList.remove("open");
+      mobileMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Menü öffnen");
+    };
+  });
+}
+
+// ---------- render ----------
+function render() {
+  renderDb();
+  renderProfile();
+  renderReq();
+  updatePlanPoolInfo();
+}
+
+function chipRowHtml(options, activeId, dataAttr) {
+  return options.map(([id, label]) =>
+    `<button type="button" class="chip${activeId === id ? " on" : ""}" data-${dataAttr}="${esc(id)}">${esc(label)}</button>`
+  ).join("");
+}
+
+function renderProfile() {
+  const p = ensureUserProfile();
+  const meta = ensureReqMeta();
+  const form = document.getElementById("profileForm");
+  const sum = document.getElementById("profileSummary");
+  if (!form || !sum) return;
+
+  const energy = calcEnergyBand(p);
+  const prot = proteinGramsFromProfile(p);
+  sum.innerHTML =
+    `<b>Zusammenfassung</b><br>` +
+    `≈ <b>${energy.min}–${energy.max} kcal</b> | Protein <b>≥ ${prot.min} g</b>` +
+    (prot.max != null ? ` | max <b>${prot.max} g</b> (Niere)` : "") +
+    ` | ${esc(prot.gPerKg.toFixed(2))} g/kg<br>` +
+    `Pool: <b>${esc(profilePatternLabel(p))}</b> | ${foodsForPlan().length} Lebensmittel`;
+
+  const genderOpts = Object.entries(meta.gender).map(([id, def]) => [id, def.label || id]);
+  const actOpts = Object.entries(meta.activity).map(([id, def]) => [id, def.label || id]);
+  const goalOpts = Object.entries(GOAL_LABEL);
+  const dietOpts = [
+    ["all", "Alle"], ["vegan", "Vegan"], ["vegetarisch", "Vegetarisch"],
+    ["pescetarisch", "Pescetarisch"], ["carnivor", "Carnivor"],
+  ];
+  const sliderMax = p.kidney_protein_cap ? KIDNEY_CAP_G_KG : PROTEIN_G_KG_MAX;
+  const sliderVal = clamp(+p.protein_g_per_kg, PROTEIN_G_KG_MIN, sliderMax);
+
+  form.innerHTML =
+    `<div class="profile-card"><h3>Körper</h3>` +
+      `<div class="profile-grid">` +
+        `<div class="profile-field"><label>Geschlecht</label>` +
+          `<div class="filters" style="margin:0" id="pfGender">${chipRowHtml(genderOpts, p.gender, "pf-gender")}</div></div>` +
+        `<div class="profile-field"><label for="pfAge">Alter (Jahre)</label>` +
+          `<input type="number" id="pfAge" min="14" max="100" step="1" value="${p.age}"></div>` +
+        `<div class="profile-field"><label for="pfWeight">Gewicht (kg)</label>` +
+          `<input type="number" id="pfWeight" min="30" max="300" step="0.1" value="${p.weight_kg}"></div>` +
+        `<div class="profile-field"><label for="pfHeight">Größe (cm)</label>` +
+          `<input type="number" id="pfHeight" min="120" max="230" step="1" value="${p.height_cm}"></div>` +
+      `</div></div>` +
+
+    `<div class="profile-card"><h3>Aktivität & Ziel</h3>` +
+      `<div class="filters" style="margin:0 0 10px" id="pfActivity">` +
+        `<span class="chip-lbl">Aktivität</span>${chipRowHtml(actOpts, p.activity, "pf-activity")}</div>` +
+      `<div class="filters" style="margin:0" id="pfGoal">` +
+        `<span class="chip-lbl">Ziel</span>${chipRowHtml(goalOpts, p.goal, "pf-goal")}</div>` +
+    `</div>` +
+
+    `<div class="profile-card"><h3>Protein</h3>` +
+      `<div class="filters" style="margin:0 0 8px" id="pfProteinPreset">` +
+        `<span class="chip-lbl">Fokus</span>` +
+        chipRowHtml([["normal", "Normal"], ["erhoeht", "Erhöht"]], p.protein_preset === "custom" ? "" : p.protein_preset, "pf-protein") +
+        (p.protein_preset === "custom" ? `<span class="muted" style="margin-left:6px">Custom ${sliderVal.toFixed(2)} g/kg</span>` : "") +
+      `</div>` +
+      `<div class="profile-slider-row">` +
+        `<label for="pfProteinSlider" class="muted">g Eiweiß / kg</label>` +
+        `<input type="range" id="pfProteinSlider" min="${PROTEIN_G_KG_MIN}" max="${sliderMax}" step="0.05" value="${sliderVal}">` +
+        `<b id="pfProteinVal">${sliderVal.toFixed(2)} g/kg → ${prot.min} g/Tag</b>` +
+      `</div>` +
+      `<label class="switch-wrap" style="margin-top:12px" title="Protein-Maximum 2 g/kg">` +
+        `<span>Niere: Eiweiß max. 2 g/kg</span>` +
+        `<span class="switch"><input type="checkbox" id="pfKidney"${p.kidney_protein_cap ? " checked" : ""}><span class="slider"></span></span>` +
+      `</label>` +
+    `</div>` +
+
+    `<div class="profile-card"><h3>Ernährungsstil &amp; Eigenschaften</h3>` +
+      `<p class="muted" style="margin:0 0 8px">Steuert den Lebensmittel-Pool im Optimalen Plan (nicht die Nährstoff-Zahlen).</p>` +
+      `<div class="filters" style="margin:0 0 8px" id="pfDiet">` +
+        `<span class="chip-lbl">Ernährungsstil</span>${chipRowHtml(dietOpts, p.diet, "pf-diet")}</div>` +
+      `<div class="filters" style="margin:0" id="pfTags">` +
+        `<span class="chip-lbl">Eigenschaften</span>` +
+        `<button type="button" class="chip${p.avoid_laktose ? " on" : ""}" data-pf-flag="avoid_laktose">Laktosefrei</button>` +
+        `<button type="button" class="chip${p.avoid_gluten ? " on" : ""}" data-pf-flag="avoid_gluten">Glutenfrei</button>` +
+        `<button type="button" class="chip${p.tag_whole_food ? " on" : ""}" data-pf-flag="tag_whole_food">Whole Food</button>` +
+        `<button type="button" class="chip${p.tag_supplement ? " on" : ""}" data-pf-flag="tag_supplement">Supplement</button>` +
+        `<button type="button" class="chip${p.tag_verarbeitet ? " on" : ""}" data-pf-flag="tag_verarbeitet">Verarbeitet</button>` +
+      `</div>` +
+    `</div>`;
+
+  const onProfileChange = () => {
+    applyProfileFromUser(true);
+  };
+
+  form.querySelectorAll("[data-pf-gender]").forEach(btn => {
+    btn.onclick = () => { p.gender = btn.dataset.pfGender; onProfileChange(); };
+  });
+  form.querySelectorAll("[data-pf-activity]").forEach(btn => {
+    btn.onclick = () => { p.activity = btn.dataset.pfActivity; onProfileChange(); };
+  });
+  form.querySelectorAll("[data-pf-goal]").forEach(btn => {
+    btn.onclick = () => { p.goal = btn.dataset.pfGoal; onProfileChange(); };
+  });
+  form.querySelectorAll("[data-pf-protein]").forEach(btn => {
+    btn.onclick = () => {
+      const id = btn.dataset.pfProtein;
+      p.protein_preset = id;
+      p.protein_g_per_kg = PROTEIN_PRESET_G_KG[id];
+      if (p.kidney_protein_cap) p.protein_g_per_kg = Math.min(p.protein_g_per_kg, KIDNEY_CAP_G_KG);
+      onProfileChange();
+    };
+  });
+  form.querySelectorAll("[data-pf-diet]").forEach(btn => {
+    btn.onclick = () => { p.diet = btn.dataset.pfDiet; onProfileChange(); };
+  });
+  form.querySelectorAll("[data-pf-flag]").forEach(btn => {
+    btn.onclick = () => {
+      const key = btn.dataset.pfFlag;
+      p[key] = !p[key];
+      onProfileChange();
+    };
+  });
+
+  const numField = (id, key, lo, hi) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // onchange only ,  full re-render would steal focus mid-typing
+    el.onchange = () => {
+      let v = +el.value;
+      if (!Number.isFinite(v)) return;
+      p[key] = clamp(v, lo, hi);
+      onProfileChange();
+    };
+  };
+  numField("pfAge", "age", 14, 100);
+  numField("pfWeight", "weight_kg", 30, 300);
+  numField("pfHeight", "height_cm", 120, 230);
+
+  const slider = document.getElementById("pfProteinSlider");
+  if (slider) {
+    slider.oninput = () => {
+      p.protein_g_per_kg = +slider.value;
+      syncProteinPreset(p);
+      // live label without full re-render (avoids losing slider drag)
+      const pr = proteinGramsFromProfile(p);
+      const lab = document.getElementById("pfProteinVal");
+      if (lab) lab.textContent = `${pr.gPerKg.toFixed(2)} g/kg → ${pr.min} g/Tag`;
+      const s = document.getElementById("profileSummary");
+      if (s) {
+        const en = calcEnergyBand(p);
+        s.innerHTML =
+          `<b>Zusammenfassung</b><br>` +
+          `≈ <b>${en.min}–${en.max} kcal</b> | Protein <b>≥ ${pr.min} g</b>` +
+          (pr.max != null ? ` | max <b>${pr.max} g</b> (Niere)` : "") +
+          ` | ${esc(pr.gPerKg.toFixed(2))} g/kg<br>` +
+          `Pool: <b>${esc(profilePatternLabel(p))}</b> | ${foodsForPlan().length} Lebensmittel`;
+      }
+    };
+    slider.onchange = () => {
+      p.protein_g_per_kg = +slider.value;
+      syncProteinPreset(p);
+      onProfileChange();
+    };
+  }
+  const kidney = document.getElementById("pfKidney");
+  if (kidney) {
+    kidney.onchange = () => {
+      p.kidney_protein_cap = !!kidney.checked;
+      if (p.kidney_protein_cap && p.protein_g_per_kg > KIDNEY_CAP_G_KG) {
+        p.protein_g_per_kg = KIDNEY_CAP_G_KG;
+      }
+      syncProteinPreset(p);
+      onProfileChange();
+    };
+  }
+}
+
+function searchableFoodName(f) {
+  const name = String(f?.name || "");
+  const cached = dbSearchCache.get(f);
+  if (cached && cached.source === name) return cached.value;
+  const value = name.toLocaleLowerCase("de");
+  dbSearchCache.set(f, { source: name, value });
+  return value;
+}
+
+function foodPassesDbFilters(f) {
+  if (dbQuery && !searchableFoodName(f).includes(dbQuery)) return false;
+  if (!matchesDiet(f, dbDiet)) return false;
+  return matchesTagFilters(f, dbTags);
+}
+
+function renderDbPagination(total, start, end, totalPages) {
+  const hasRows = total > 0;
+  const current = hasRows ? dbPage : 0;
+  const pages = hasRows ? totalPages : 0;
+  const html =
+    `<button type="button" data-db-page="prev" aria-label="Vorherige Seite"${!hasRows || dbPage <= 1 ? " disabled" : ""}>←</button>` +
+    `<span>Seite <b>${current}</b> / ${pages}</span>` +
+    `<span class="page-range">${hasRows ? `${start + 1}–${end} von ${total}` : "Keine Treffer"}</span>` +
+    `<button type="button" data-db-page="next" aria-label="Nächste Seite"${!hasRows || dbPage >= totalPages ? " disabled" : ""}>→</button>`;
+  document.querySelectorAll(".db-pagination").forEach(el => { el.innerHTML = html; });
+}
+
+function renderDb() {
+  const t = document.getElementById("dbTable");
+  const arr = k => sortKey === k ? (sortDir > 0 ? " ▲" : " ▼") : "";
+  const colCount = 3 + PARAMS.length + 1;
+  let html = "<thead><tr>" +
+    `<th data-sort="name" scope="col">Name${arr("name")}</th>` +
+    `<th data-sort="unit" scope="col">pro${arr("unit")}</th>` +
+    `<th data-sort="price" scope="col">Preis (€)${arr("price")}</th>` +
+    PARAMS.map(p => `<th data-sort="${esc(p)}" scope="col" title="${esc(lbl(p))}">${esc(lbl(p))}${arr(p)}</th>`).join("") +
+    "<th></th></tr></thead><tbody>";
+
+  // Filter and sort the lightweight index list; only the current page becomes DOM.
+  let order = foods.map((_, i) => i).filter(i => foodPassesDbFilters(foods[i]));
+  if (sortKey) {
+    const gv = i => {
+      const f = foods[i];
+      if (sortKey === "name") return f.name;
+      if (sortKey === "unit") return foodUnit(f);
+      if (sortKey === "price") return foodPrice(f);
+      return f.nutrients[sortKey] || 0;
+    };
+    order.sort((a, b) => {
+      const x = gv(a), y = gv(b);
+      const comparison = typeof x === "string" || typeof y === "string"
+        ? dbCollator.compare(String(x), String(y))
+        : Number(x) - Number(y);
+      return comparison * sortDir;
+    });
+  } else if (groupByCategory) {
+    const cOrd = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
+    order.sort((a, b) => {
+      const fa = foods[a], fb = foods[b];
+      const ca = cOrd[fa.category] ?? 99, cb = cOrd[fb.category] ?? 99;
+      if (ca !== cb) return ca - cb;
+      return dbCollator.compare(fa.name, fb.name);
+    });
+  } else {
+    order.sort((a, b) => dbCollator.compare(foods[a].name, foods[b].name));
+  }
+
+  const total = order.length;
+  const totalPages = Math.max(1, Math.ceil(total / dbPageSize));
+  dbPage = Math.min(Math.max(1, dbPage), totalPages);
+  const start = total ? (dbPage - 1) * dbPageSize : 0;
+  const end = Math.min(start + dbPageSize, total);
+  const visibleOrder = order.slice(start, end);
+
+  let lastCat = null;
+  visibleOrder.forEach(i => {
+    const f = foods[i];
+    if (groupByCategory && !sortKey && f.category !== lastCat) {
+      lastCat = f.category;
+      const label = CATEGORY_LABEL[f.category] || f.category;
+      html += `<tr class="cat-row"><td colspan="${colCount}">${esc(label)}</td></tr>`;
+    }
+    const u = foodUnit(f);
+    html += "<tr>" +
+      `<td class="name"><div class="namewrap"><button type="button" class="info" data-info="${i}" title="Nährwerte anzeigen" aria-label="Nährwerte von ${esc(f.name)} anzeigen">i</button><input data-i="${i}" data-k="name" value="${esc(f.name)}" aria-label="Name"></div></td>` +
+      `<td class="unit-badge" title="Bezugsgröße (fest)">${unitPer100(u)}</td>` +
+      `<td><input type="number" step="any" data-i="${i}" data-k="price" value="${foodPrice(f)}" title="${priceHeader(u)}" aria-label="Preis ${esc(f.name)}"></td>` +
+      PARAMS.map(p => `<td><input type="number" step="any" data-i="${i}" data-n="${esc(p)}" value="${f.nutrients[p] ?? ""}" aria-label="${esc(lbl(p))} ${esc(f.name)}"></td>`).join("") +
+      `<td><button type="button" class="ghost" data-del="${i}" aria-label="${esc(f.name)} löschen">✕</button></td>` +
+      "</tr>";
+  });
+  if (!visibleOrder.length) {
+    html += `<tr class="empty-row"><td colspan="${colCount}">Keine Lebensmittel entsprechen den gewählten Filtern.</td></tr>`;
+  }
+  t.innerHTML = html + "</tbody>";
+  document.getElementById("foodCount").textContent = total === foods.length
+    ? `${foods.length} Lebensmittel`
+    : `${total} Treffer | ${foods.length} gesamt`;
+  document.getElementById("heroFoodCount").textContent = foods.length;
+  document.getElementById("heroParamCount").textContent = PARAMS.length;
+  renderDbPagination(total, start, end, totalPages);
+}
+
+const dbTable = document.getElementById("dbTable");
+dbTable.addEventListener("input", event => {
+  const input = event.target.closest("input[data-i]");
+  if (!input) return;
+  const i = +input.dataset.i;
+  const f = foods[i];
+  if (!f) return;
+  if (input.dataset.k === "name") {
+    f.name = input.value;
+    dbSearchCache.delete(f);
+  } else if (input.dataset.k === "price") {
+    f.price_per_100 = num(input.value) ?? 0;
+  } else {
+    const value = num(input.value);
+    if (value === null) delete f.nutrients[input.dataset.n];
+    else f.nutrients[input.dataset.n] = value;
+  }
+  scheduleSaveFoods();
+});
+dbTable.addEventListener("click", event => {
+  const info = event.target.closest("[data-info]");
+  if (info) {
+    openFood(+info.dataset.info);
+    return;
+  }
+  const remove = event.target.closest("[data-del]");
+  if (remove) {
+    foods.splice(+remove.dataset.del, 1);
+    saveFoods();
+    renderDb();
+    return;
+  }
+  const heading = event.target.closest("th[data-sort]");
+  if (heading) {
+    const k = heading.dataset.sort;
+    if (sortKey === k) sortDir *= -1;
+    else { sortKey = k; sortDir = 1; }
+    dbPage = 1;
+    renderDb();
+  }
+});
+document.querySelectorAll(".db-pagination").forEach(pagination => {
+  pagination.addEventListener("click", event => {
+    const button = event.target.closest("[data-db-page]");
+    if (!button || button.disabled) return;
+    dbPage += button.dataset.dbPage === "next" ? 1 : -1;
+    renderDb();
+    document.querySelector(".database-scroll")?.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+document.getElementById("dbPageSize").onchange = event => {
+  dbPageSize = +event.target.value || 48;
+  dbPage = 1;
+  renderDb();
+};
+
+/** All diet styles on this food, fixed order. */
+function foodDietDisplay(f) {
+  const order = ["vegan", "vegetarisch", "pescetarisch", "omnivor", "carnivor"];
+  const parts = order.filter(t => hasTag(f, t)).map(t => TAG_LABEL[t] || t);
+  return parts.length ? parts.join(" | ") : "…";
+}
+/** Properties for display: free-of labels when absent; other tags when present. */
+function foodPropertyDisplay(f) {
+  const labels = [];
+  if (!hasTag(f, "laktose")) labels.push("Laktosefrei");
+  if (!hasTag(f, "gluten")) labels.push("Glutenfrei");
+  for (const t of ["whole_food", "supplement", "verarbeitet"]) {
+    if (hasTag(f, t)) labels.push(TAG_LABEL[t] || t);
+  }
+  return labels.length ? labels.join(" | ") : "—";
+}
+
+function openFood(i) {
+  const f = foods[i];
+  const u = foodUnit(f);
+  document.getElementById("fmTitle").textContent = f.name;
+  const val = v => v == null ? "0" : (+(+v).toFixed(3)).toString();
+  const rows = [
+    `<tr><td class="muted">Kategorie</td><td>${esc(CATEGORY_LABEL[f.category] || f.category || "…")}</td></tr>`,
+    `<tr><td class="muted">Ernährungsstil</td><td>${esc(foodDietDisplay(f))}</td></tr>`,
+    `<tr><td class="muted">Eigenschaften</td><td>${esc(foodPropertyDisplay(f))}</td></tr>`,
+    `<tr><td class="muted">Bezugsgröße</td><td>pro ${unitPer100(u)}</td></tr>`,
+    `<tr><td class="muted">Preis / ${unitPer100(u)}</td><td>${foodPrice(f).toFixed(3)} €</td></tr>`,
+  ].concat(PARAMS.map(p => `<tr><td>${lbl(p)}</td><td>${val(f.nutrients[p])}</td></tr>`));
+  document.getElementById("fmTable").innerHTML = "<tbody>" + rows.join("") + "</tbody>";
+  document.getElementById("foodModal").showModal();
+}
+
+function renderReqPattern() {
+  const el = document.getElementById("reqPattern");
+  if (!el) return;
+  const p = ensureUserProfile();
+  el.innerHTML =
+    `<span class="chip-lbl">Aus Mein Profil:</span>` +
+    `<span><b>${esc(profileLabel())}</b></span>` +
+    `<span class="muted">|</span>` +
+    `<span>Pool: <b>${esc(profilePatternLabel(p))}</b></span>` +
+    `<span class="muted">| Unter „Mein Profil“ ändern</span>`;
+}
+
+function renderReq() {
+  renderReqPattern();
+  const g = document.getElementById("reqGrid");
+  if (!g) return;
+  let html = `<div class="hd">Nährwert</div><div class="hd">Min</div><div class="hd">Max</div>`;
+  PARAMS.forEach(p => {
+    if (!req[p]) req[p] = { min: null, max: null };
+    html += `<div>${lbl(p)}</div>` +
+      `<input type="number" step="any" data-p="${esc(p)}" data-b="min" value="${req[p].min ?? ""}">` +
+      `<input type="number" step="any" data-p="${esc(p)}" data-b="max" value="${req[p].max ?? ""}">`;
+  });
+  g.innerHTML = html;
+  g.querySelectorAll("input").forEach(inp => inp.oninput = () => {
+    req[inp.dataset.p][inp.dataset.b] = num(inp.value);
+    reqCustom = true;
+    saveReq();
+    updateReqStatus();
+  });
+  updateReqStatus();
+}
+function updateReqStatus() {
+  const el = document.getElementById("reqStatus");
+  if (!el) return;
+  el.textContent = reqCustom ? "● manuell angepasst" : "";
+}
+
+// ---------- add / export ----------
+document.getElementById("dbSearch").oninput = e => {
+  const nextQuery = e.target.value.trim().toLocaleLowerCase("de");
+  if (dbSearchTimer) clearTimeout(dbSearchTimer);
+  dbSearchTimer = setTimeout(() => {
+    dbQuery = nextQuery;
+    dbPage = 1;
+    renderDb();
+  }, 120);
+};
+
+function openAddFoodModal() {
+  const body = document.getElementById("afBody");
+  const err = document.getElementById("afErr");
+  err.style.display = "none";
+  err.textContent = "";
+  const catOpts = CATEGORY_ORDER.map(c =>
+    `<option value="${c}">${esc(CATEGORY_LABEL[c])}</option>`).join("");
+  let html =
+    `<div class="af-section">Allgemein</div>` +
+    `<div class="af-field"><label for="afName">Name</label>` +
+    `<input id="afName" type="text" autocomplete="off" placeholder="z. B. Haferflocken (trocken)"></div>` +
+    `<div class="af-field"><label for="afUnit">Bezugsgröße</label>` +
+    `<select id="afUnit">` +
+      `<option value="g" selected>100 g (fest)</option>` +
+      `<option value="ml">100 ml (flüssig)</option>` +
+      `<option value="stk">1 Stück (Tablette)</option>` +
+      `<option value="tr">1 Tropfen</option>` +
+    `</select></div>` +
+    `<div class="af-field"><label for="afCat">Kategorie</label>` +
+    `<select id="afCat">${catOpts}</select></div>` +
+    `<div class="af-field"><label for="afPrice" id="afPriceLbl">Preis / 100 g (€)</label>` +
+    `<input id="afPrice" type="number" step="any" min="0" placeholder="0.000"></div>` +
+    `<div class="af-section">Ernährungsstil</div>` +
+    `<div style="display:flex;flex-wrap:wrap;gap:10px 14px;margin-bottom:10px">` +
+      ["vegan", "vegetarisch", "pescetarisch", "carnivor"].map(t =>
+        `<label style="display:flex;align-items:center;gap:4px;cursor:pointer" title="${
+          t === "carnivor" ? "tierisch / Carnivor-geeignet" : ""
+        }">` +
+        `<input type="checkbox" data-tag="${t}" id="afTag_${t}"> ${TAG_LABEL[t]}</label>`).join("") +
+    `</div>` +
+    `<div class="af-section">Eigenschaften</div>` +
+    `<div style="display:flex;flex-wrap:wrap;gap:10px 14px;margin-bottom:10px">` +
+      PROPERTY_TAGS.map(t =>
+        `<label style="display:flex;align-items:center;gap:4px;cursor:pointer" title="${
+          t === "laktose" ? "enthält Laktose" : t === "gluten" ? "enthält Gluten" : ""
+        }">` +
+        `<input type="checkbox" data-tag="${t}" id="afTag_${t}"> ${
+          t === "laktose" ? "enthält Laktose" : t === "gluten" ? "enthält Gluten" : TAG_LABEL[t]
+        }</label>`).join("") +
+    `</div>` +
+    `<div class="af-section" id="afNutSection">Nährwerte pro 100 g <span class="muted" style="text-transform:none;letter-spacing:0">(leer = 0)</span></div>`;
+  PARAMS.forEach(p => {
+    const id = "afN_" + p.replace(/[^a-zA-Z0-9]+/g, "_");
+    html += `<div class="af-field"><label for="${id}">${esc(lbl(p))}</label>` +
+      `<input id="${id}" type="number" step="any" data-n="${esc(p)}" placeholder="…"></div>`;
+  });
+  body.innerHTML = html;
+  const syncUnitLabels = () => {
+    const u = normalizeUnit(document.getElementById("afUnit")?.value);
+    const pl = document.getElementById("afPriceLbl");
+    const sec = document.getElementById("afNutSection");
+    const p100 = unitPer100(u);
+    if (pl) pl.textContent = `Preis / ${p100} (€)`;
+    if (sec) sec.innerHTML = `Nährwerte pro ${p100} <span class="muted" style="text-transform:none;letter-spacing:0">(leer = 0)</span>`;
+  };
+  document.getElementById("afUnit").onchange = syncUnitLabels;
+  // diet cascade: vegan → vegetarisch → pescetarisch (omnivor wird intern gesetzt)
+  const check = id => { const el = document.getElementById(id); if (el) el.checked = true; };
+  document.getElementById("afTag_vegan").onchange = e => {
+    if (e.target.checked) { check("afTag_vegetarisch"); check("afTag_pescetarisch"); }
+  };
+  document.getElementById("afTag_vegetarisch").onchange = e => {
+    if (e.target.checked) check("afTag_pescetarisch");
+  };
+  // every supplement is processed
+  document.getElementById("afTag_supplement").onchange = e => {
+    if (e.target.checked) {
+      check("afTag_verarbeitet");
+      const wf = document.getElementById("afTag_whole_food");
+      if (wf) wf.checked = false;
+    }
+  };
+  document.getElementById("addFoodModal").showModal();
+  requestAnimationFrame(() => document.getElementById("afName")?.focus());
+}
+
+function closeAddFoodModal() {
+  document.getElementById("addFoodModal").close();
+}
+
+function saveNewFoodFromModal() {
+  const err = document.getElementById("afErr");
+  const name = (document.getElementById("afName")?.value || "").trim();
+  if (!name) {
+    err.textContent = "Bitte einen Namen eingeben.";
+    err.style.display = "block";
+    document.getElementById("afName")?.focus();
+    return;
+  }
+  const priceRaw = document.getElementById("afPrice")?.value;
+  const price = num(priceRaw);
+  if (priceRaw !== undefined && String(priceRaw).trim() !== "" && price === null) {
+    err.textContent = "Preis ist keine gültige Zahl.";
+    err.style.display = "block";
+    document.getElementById("afPrice")?.focus();
+    return;
+  }
+  if (price !== null && price < 0) {
+    err.textContent = "Preis darf nicht negativ sein.";
+    err.style.display = "block";
+    document.getElementById("afPrice")?.focus();
+    return;
+  }
+  const nutrients = {};
+  let bad = null;
+  document.querySelectorAll("#afBody input[data-n]").forEach(inp => {
+    if (bad) return;
+    const raw = inp.value;
+    if (String(raw).trim() === "") return;
+    const v = num(raw);
+    if (v === null) { bad = inp; return; }
+    nutrients[inp.dataset.n] = v;
+  });
+  if (bad) {
+    err.textContent = `Ungültiger Wert bei „${lbl(bad.dataset.n)}“.`;
+    err.style.display = "block";
+    bad.focus();
+    return;
+  }
+  const unit = normalizeUnit(document.getElementById("afUnit")?.value);
+  let category = document.getElementById("afCat")?.value || "verarbeitet";
+  if (!CATEGORY_LABEL[category]) category = "verarbeitet";
+  const tags = [];
+  document.querySelectorAll("#afBody input[data-tag]").forEach(cb => {
+    if (cb.checked) tags.push(cb.dataset.tag);
+  });
+  const cat = category;
+  foods.push({
+    name,
+    unit,
+    price_per_100: price === null ? 0 : price,
+    category: cat,
+    tags: expandDietTags(tags, cat),
+    nutrients
+  });
+  saveFoods();
+  closeAddFoodModal();
+  dbQuery = "";
+  dbPage = 1;
+  const search = document.getElementById("dbSearch");
+  if (search) search.value = "";
+  renderDb();
+}
+
+document.getElementById("addFood").onclick = () => openAddFoodModal();
+document.getElementById("afClose").onclick = () => closeAddFoodModal();
+document.getElementById("afCancel").onclick = () => closeAddFoodModal();
+document.getElementById("afSave").onclick = () => saveNewFoodFromModal();
+
+// Group by category switch (default off)
+document.getElementById("groupByCat").onchange = e => {
+  groupByCategory = !!e.target.checked;
+  dbPage = 1;
+  renderDb();
+};
+
+// DB filters: Ernährungsstil (single) + Eigenschaften (multi, AND)
+document.getElementById("dbFilters").onclick = e => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  if (btn.dataset.diet != null) {
+    dbDiet = btn.dataset.diet;
+    document.querySelectorAll("#dbFilters [data-diet]").forEach(b => {
+      const on = b.dataset.diet === dbDiet;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+  } else if (btn.dataset.tag) {
+    const t = btn.dataset.tag;
+    if (dbTags.has(t)) dbTags.delete(t); else dbTags.add(t);
+    const on = dbTags.has(t);
+    btn.classList.toggle("on", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+  dbPage = 1;
+  renderDb();
+};
+// Integer amounts switch (default off)
+document.getElementById("integerAmounts").onchange = e => {
+  integerAmounts = !!e.target.checked;
+};
+document.getElementById("addFoodModal").onclick = e => {
+  if (e.target === e.currentTarget) closeAddFoodModal();
+};
+document.getElementById("addFoodModal").addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.id === "afName") {
+    e.preventDefault();
+    document.getElementById("afPrice")?.focus();
+  }
+});
+document.getElementById("resetDb").onclick = () => {
+  if (!confirm("Alle Änderungen verwerfen und database.json neu laden?")) return;
+  foods = JSON.parse(JSON.stringify(SEED));
+  dbPage = 1;
+  saveFoods();
+  renderDb();
+};
+document.getElementById("resetReq").onclick = () => {
+  if (!confirm("Eigene Werte verwerfen und Anforderungen aus „Mein Profil“ neu erzeugen?")) return;
+  applyProfileFromUser(true);
+};
+document.getElementById("resetProfile").onclick = () => {
+  if (!confirm("Mein Profil auf den Standard zurücksetzen?\n(18 J | 80 kg | 188 cm | Protein 2 g/kg | Ernährung: alle)\nAnforderungen werden neu erzeugt.")) return;
+  resetUserProfileToDefault();
+};
+// ---------- the optimizer ----------
+/**
+ * Stored price/nutrients are per unitRef(f): 100 for g/ml, 1 for stk/tr.
+ * Continuous: u = number of reference batches → amount = u * ref
+ * Integer:    u = whole physical units (1 g / 1 ml / 1 Stück / 1 Tropfen) → amount = u;
+ *             coeffs scaled by 1/ref
+ *
+ * Integer mode:
+ *  Phase 1 ,  fast continuous + support-MILP with kcal max reduced by INTEGER_KCAL_BUFFER
+ *  Phase 2 ,  if real constraints violated, adjust only with candidates for those deficits
+ *            under the real (full) kcal max
+ */
+const INTEGER_KCAL_BUFFER = 25;
+const ENERGY_PARAM = "Energy (cal)";
+
+function cloneReqMap(src) {
+  const out = {};
+  PARAMS.forEach(p => {
+    const r = (src && src[p]) || { min: null, max: null };
+    out[p] = { min: r.min, max: r.max };
+  });
+  return out;
+}
+
+/** Phase-1 req: leave headroom on energy max so phase-2 adds rarely blow kcal. */
+function reqWithKcalBuffer(base, buffer) {
+  const out = cloneReqMap(base || req);
+  const e = out[ENERGY_PARAM];
+  if (!e || e.max == null) return out;
+  let buf = buffer == null ? INTEGER_KCAL_BUFFER : buffer;
+  if (e.min != null) buf = Math.min(buf, Math.max(0, e.max - e.min));
+  e.max = e.max - buf;
+  return out;
+}
+
+/**
+ * @param {object[]} list
+ * @param {boolean} asInteger
+ * @param {object} [reqMap] optional constraint map (defaults to global req)
+ */
+function buildModel(list, asInteger, reqMap) {
+  const pool = list || foodsForPlan();
+  const useInt = !!asInteger;
+  const R = reqMap || req;
+  const constraints = {};
+  PARAMS.forEach(p => {
+    const r = R[p] || { min: null, max: null }, c = {};
+    if (r.min !== null && r.min !== undefined) c.min = r.min;
+    if (r.max !== null && r.max !== undefined) c.max = r.max;
+    if (Object.keys(c).length) constraints[p] = c;
+  });
+  const variables = {};
+  const ints = {};
+  pool.forEach((f, i) => {
+    const key = "f" + i;
+    const ref = foodRef(f); // 100 or 1
+    const scale = useInt ? (1 / ref) : 1;
+    const v = { cost: foodPrice(f) * scale };
+    PARAMS.forEach(p => {
+      const raw = f.nutrients[p];
+      if (raw) v[p] = raw * scale;
+    });
+    variables[key] = v;
+    if (useInt) ints[key] = 1;
+  });
+  const model = { optimize: "cost", opType: "min", constraints, variables };
+  if (useInt) {
+    model.ints = ints;
+    model.options = { timeout: 8000, tolerance: 0.01 };
+  }
+  return model;
+}
+
+function diagnoseInfeasible(list) {
+  // Always continuous (fast). Integer infeasibility is diagnosed the same way.
+  const pool = list || foodsForPlan();
+  const keys = Object.keys(buildModel(pool, false).constraints);
+  const culprits = [];
+  keys.forEach(k => {
+    const m = buildModel(pool, false);
+    delete m.constraints[k];
+    if (solver.Solve(m).feasible) culprits.push(lbl(k));
+  });
+  return culprits;
+}
+
+/** Convert solver variable u → physical amount in the food's unit. */
+function planAmount(u, integerMode, f) {
+  if (integerMode) return u;
+  return u * foodRef(f);
+}
+/** Cost for solver variable u. */
+function planCost(u, f, integerMode) {
+  const ref = foodRef(f);
+  return integerMode ? u * foodPrice(f) / ref : u * foodPrice(f);
+}
+/** Nutrient contribution for solver variable u. */
+function planNutrient(u, f, p, integerMode) {
+  const raw = (f.nutrients && f.nutrients[p]) || 0;
+  const ref = foodRef(f);
+  return integerMode ? u * raw / ref : u * raw;
+}
+
+function unitNutrient(f, p) {
+  return ((f.nutrients && f.nutrients[p]) || 0) / foodRef(f);
+}
+function unitCost(f) {
+  return foodPrice(f) / foodRef(f);
+}
+
+function integerPlanFeasibleWith(chosen, reqMap) {
+  const R = reqMap || req;
+  for (let i = 0; i < PARAMS.length; i++) {
+    const p = PARAMS[i];
+    const r = R[p] || { min: null, max: null };
+    if (r.min === null && r.max === null) continue;
+    const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, true), 0);
+    if (!meets(total, r)) return false;
+  }
+  return true;
+}
+
+/** Does chosen integer list meet all real req constraints? */
+function integerPlanFeasible(chosen) {
+  return integerPlanFeasibleWith(chosen, req);
+}
+
+function collectViolations(chosen, reqMap) {
+  const R = reqMap || req;
+  const under = [];
+  const over = [];
+  for (const p of PARAMS) {
+    const r = R[p] || { min: null, max: null };
+    if (r.min === null && r.max === null) continue;
+    const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, true), 0);
+    if (r.min !== null && total < r.min - boundTol(r.min)) under.push(p);
+    if (r.max !== null && total > r.max + boundTol(r.max)) over.push(p);
+  }
+  return { under, over };
+}
+
+/** Top foods from pool that supply nutrient p cheaply per integer unit. */
+function topFoodsForNutrient(pool, p, limit) {
+  const scored = [];
+  for (const f of pool) {
+    const n = unitNutrient(f, p);
+    if (n <= 0) continue;
+    const c = unitCost(f);
+    if (c <= 0) continue;
+    let score = n / c;
+    if (hasTag(f, "supplement")) score *= 1.5;
+    scored.push({ f, score });
+  }
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, limit || 8).map(x => x.f);
+}
+
+/** Merge unique foods by name. */
+function mergeFoods(lists) {
+  const m = new Map();
+  for (const list of lists) {
+    for (const f of list) {
+      if (f && f.name && !m.has(f.name)) m.set(f.name, f);
+    }
+  }
+  return [...m.values()];
+}
+
+function chosenFromMilp(foods, intRes) {
+  return foods.map((f, i) => ({ f, u: Math.round(intRes["f" + i] || 0) }))
+    .filter(x => x.u > 0)
+    .sort((a, b) => b.u - a.u);
+}
+
+function packPlan(chosen, method, approx) {
+  const cost = chosen.reduce((s, x) => s + planCost(x.u, x.f, true), 0);
+  return {
+    feasible: true,
+    chosen: chosen.sort((a, b) => b.u - a.u),
+    cost,
+    method,
+    approx: !!approx,
+  };
+}
+
+/** True if adding +1 unit of f keeps all max constraints of reqMap. */
+function canAddOneUnit(chosen, f, reqMap) {
+  const R = reqMap || req;
+  for (const p of PARAMS) {
+    const r = R[p] || { min: null, max: null };
+    if (r.max === null) continue;
+    const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, true), 0)
+      + unitNutrient(f, p);
+    if (total > r.max + boundTol(r.max)) return false;
+  }
+  return true;
+}
+
+/** Run solver.Solve in a Worker so the loading bar stays animated. */
+function solveModelAsync(model) {
+  return new Promise((resolve, reject) => {
+    let done = false;
+    const finish = (ok, v) => {
+      if (done) return;
+      done = true;
+      if (ok) resolve(v); else reject(v);
+    };
+    try {
+      const w = new Worker("plan-worker.js");
+      w.onmessage = (ev) => {
+        w.terminate();
+        if (ev.data && ev.data.ok) finish(true, ev.data.result);
+        else finish(false, new Error((ev.data && ev.data.error) || "Solver fehlgeschlagen"));
+      };
+      w.onerror = () => {
+        try { w.terminate(); } catch (_) {}
+        // Worker blocked (often file://) → sync fallback
+        try { finish(true, solver.Solve(model)); }
+        catch (err) { finish(false, err); }
+      };
+      w.postMessage(model);
+    } catch (_) {
+      try { finish(true, solver.Solve(model)); }
+      catch (err) { finish(false, err); }
+    }
+  });
+}
+
+/**
+ * Integer plan:
+ *  1) Phase 1 with kcal buffer (fast continuous + support MILP / round)
+ *  2) Phase 2 only if real req violated: expand support by deficit foods, re-MILP / repair
+ */
+async function solveIntegerPlan(pool) {
+  const realReq = req;
+  const phase1Req = reqWithKcalBuffer(realReq, INTEGER_KCAL_BUFFER);
+
+  let cont = await solveModelAsync(buildModel(pool, false, phase1Req));
+  let usedBuffer = true;
+  if (!cont.feasible) {
+    cont = await solveModelAsync(buildModel(pool, false, realReq));
+    usedBuffer = false;
+    if (!cont.feasible) return { feasible: false, cont };
+  }
+
+  let support = [];
+  pool.forEach((f, i) => {
+    const u = cont["f" + i] || 0;
+    if (u > 1e-6) support.push({ f, contU: u, idx: i });
+  });
+  if (support.length > 50) {
+    support.sort((a, b) => b.contU - a.contU);
+    support = support.slice(0, 50);
+  }
+  let supportFoods = support.map(s => s.f);
+  const phase1Constraints = usedBuffer ? phase1Req : realReq;
+
+  let chosen = null;
+  let method = "round";
+
+  let intRes = null;
+  if (supportFoods.length) {
+    intRes = await solveModelAsync(buildModel(supportFoods, true, phase1Constraints));
+  }
+  if (intRes && intRes.feasible) {
+    chosen = chosenFromMilp(supportFoods, intRes);
+    method = "milp-support";
+  } else {
+    chosen = pool.map((f, i) => {
+      const uCont = cont["f" + i] || 0;
+      return { f, u: Math.max(0, Math.round(uCont * foodRef(f))) };
+    }).filter(x => x.u > 0);
+
+    if (!integerPlanFeasibleWith(chosen, phase1Constraints)) {
+      chosen = pool.map((f, i) => {
+        const uCont = cont["f" + i] || 0;
+        return { f, u: Math.max(0, Math.ceil(uCont * foodRef(f) - 1e-9)) };
+      }).filter(x => x.u > 0);
+    }
+    method = "round";
+  }
+
+  // Soft repair against phase-1 constraints (still buffered kcal)
+  if (!integerPlanFeasibleWith(chosen, phase1Constraints)) {
+    chosen = repairIntegerPlan(chosen, pool, phase1Constraints);
+    method = method === "milp-support" ? "milp+repair" : "round+repair";
+  }
+
+  // ----- Phase 2: only if real constraints still violated -----
+  let viol = collectViolations(chosen, realReq);
+  if (viol.under.length || viol.over.length) {
+    // Support = current plan foods ∪ top candidates for each under-min nutrient
+    const deficitFoods = [];
+    for (const p of viol.under) {
+      deficitFoods.push(...topFoodsForNutrient(pool, p, 10));
+    }
+    // Always include supplements that cover any under-min nutrient
+    for (const f of pool) {
+      if (!hasTag(f, "supplement")) continue;
+      for (const p of viol.under) {
+        if (unitNutrient(f, p) > 0) {
+          deficitFoods.push(f);
+          break;
+        }
+      }
+    }
+    const phase2Foods = mergeFoods([
+      chosen.map(x => x.f),
+      deficitFoods,
+    ]);
+
+    const int2 = await solveModelAsync(buildModel(phase2Foods, true, realReq));
+    if (int2 && int2.feasible) {
+      const c2 = chosenFromMilp(phase2Foods, int2);
+      if (integerPlanFeasibleWith(c2, realReq)) {
+        return packPlan(c2, "milp-deficit", false);
+      }
+      chosen = c2;
+      method = "milp-deficit";
+    }
+
+    // Constraint-safe greedy only for remaining real violations
+    if (!integerPlanFeasibleWith(chosen, realReq)) {
+      chosen = repairIntegerPlan(chosen, pool, realReq);
+      method = method + "+repair";
+    }
+    viol = collectViolations(chosen, realReq);
+  }
+
+  const approx = !integerPlanFeasibleWith(chosen, realReq);
+  return packPlan(chosen, method, approx);
+}
+
+/**
+ * Greedy repair against reqMap:
+ *  - fill under-min with best nutrient/€ unit that does not break any max
+ *  - trim over-max by removing 1 unit from highest contributor
+ */
+function repairIntegerPlan(chosen, pool, reqMap) {
+  const R = reqMap || req;
+  chosen = chosen.map(x => ({ f: x.f, u: x.u }));
+  const byName = new Map(chosen.map(x => [x.f.name, x]));
+
+  for (let step = 0; step < 250; step++) {
+    let changed = false;
+
+    // Fill mins
+    for (const p of PARAMS) {
+      const r = R[p] || { min: null, max: null };
+      if (r.min === null) continue;
+      const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, true), 0);
+      if (total >= r.min - boundTol(r.min)) continue;
+
+      let best = null, bestScore = -Infinity;
+      for (const f of pool) {
+        const n = unitNutrient(f, p);
+        if (n <= 0) continue;
+        const c = unitCost(f);
+        if (c <= 0) continue;
+        if (!canAddOneUnit(chosen, f, R)) continue;
+        let score = n / c;
+        if (hasTag(f, "supplement")) score *= 1.5;
+        if (score > bestScore) { bestScore = score; best = f; }
+      }
+      if (!best) continue;
+      const row = byName.get(best.name);
+      if (row) row.u += 1;
+      else {
+        const x = { f: best, u: 1 };
+        chosen.push(x);
+        byName.set(best.name, x);
+      }
+      changed = true;
+      break; // one add per step
+    }
+
+    // Trim maxes (prefer not undoing pure supplements if another contributor exists)
+    for (const p of PARAMS) {
+      const r = R[p] || { min: null, max: null };
+      if (r.max === null) continue;
+      const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, true), 0);
+      if (total <= r.max + boundTol(r.max)) continue;
+
+      let worst = null, worstN = 0;
+      for (const x of chosen) {
+        if (x.u <= 0) continue;
+        const n = planNutrient(1, x.f, p, true);
+        if (n > worstN) { worstN = n; worst = x; }
+      }
+      if (worst && worst.u > 0) {
+        worst.u -= 1;
+        changed = true;
+      }
+    }
+
+    chosen = chosen.filter(x => x.u > 0);
+    // rebuild map after filter
+    byName.clear();
+    for (const x of chosen) byName.set(x.f.name, x);
+
+    if (!changed && integerPlanFeasibleWith(chosen, R)) break;
+    if (!changed) break;
+  }
+  return chosen.filter(x => x.u > 0);
+}
+
+let plan = null;   // { chosen:[{f,u}], cost, diet, integer, approx? }
+
+function showPlanLoading(msg, sub) {
+  plan = null;
+  document.getElementById("planOut").innerHTML =
+    `<div class="plan-loading">` +
+      `<p class="plan-loading-title">${esc(msg || "Berechne optimalen Plan…")}</p>` +
+      `<p class="plan-loading-sub">${esc(sub || "Bitte warten")}</p>` +
+      `<div class="bar-track"><div class="bar-fill"></div></div>` +
+    `</div>`;
+}
+
+document.getElementById("calc").onclick = () => {
+  const out = document.getElementById("planOut");
+  const calcBtn = document.getElementById("calc");
+  const pool = foodsForPlan();
+  const useInt = integerAmounts;
+  if (!pool.length) {
+    plan = null;
+    out.innerHTML = `<p class="err">Keine Lebensmittel für den gewählten Filter (<b>${esc(planFilterLabel())}</b>).</p>`;
+    return;
+  }
+
+  // Clear old results immediately; simple loader for integer mode
+  if (useInt) {
+    showPlanLoading(
+      "Berechne Plan mit ganzen Mengen…",
+      `Filter: ${planFilterLabel()} | ${pool.length} Lebensmittel`
+    );
+  } else {
+    plan = null;
+    out.innerHTML = "";
+  }
+  calcBtn.disabled = true;
+
+  const finishErr = (html) => {
+    plan = null;
+    out.innerHTML = html;
+    calcBtn.disabled = false;
+  };
+
+  const run = async () => {
+    try {
+      if (!useInt) {
+        const res = await solveModelAsync(buildModel(pool, false));
+        if (!res.feasible) {
+          const culprits = diagnoseInfeasible(pool);
+          const why = culprits.length
+            ? `Blockierende Anforderung${culprits.length > 1 ? "en" : ""}: <b>${culprits.map(esc).join(", ")}</b> ,  jeweils würde das Lockern schon reichen.`
+            : `Mehrere Anforderungen stehen im Konflikt to keine einzelne allein ist die Ursache.`;
+          finishErr(`<p class="err"><b>Keine Kombination erfüllt alle Anforderungen.</b> Filter: <b>${esc(planFilterLabel())}</b> (${pool.length} Lebensmittel).<br>${why}<br>Lockere die Schranken oder füge Lebensmittel hinzu.</p>`);
+          return;
+        }
+        plan = {
+          chosen: pool.map((f, i) => ({ f, u: res["f" + i] || 0 })).filter(x => x.u > 1e-6).sort((a, b) => b.u - a.u),
+          cost: res.result,
+          diet: ensureUserProfile().diet,
+          tags: [...profilePlanTags()],
+          filterLabel: planFilterLabel(),
+          poolSize: pool.length,
+          integer: false,
+        };
+        calcBtn.disabled = false;
+        renderPlan();
+        return;
+      }
+
+      const result = await solveIntegerPlan(pool);
+      if (!result.feasible) {
+        const culprits = diagnoseInfeasible(pool);
+        const why = culprits.length
+          ? `Blockierende Anforderung${culprits.length > 1 ? "en" : ""}: <b>${culprits.map(esc).join(", ")}</b> ,  jeweils würde das Lockern schon reichen.`
+          : `Mehrere Anforderungen stehen im Konflikt to keine einzelne allein ist die Ursache.`;
+        finishErr(`<p class="err"><b>Keine Kombination erfüllt alle Anforderungen.</b> Filter: <b>${esc(planFilterLabel())}</b> (${pool.length} Lebensmittel).<br>${why}<br>Lockere die Schranken oder füge Lebensmittel hinzu.</p>`);
+        return;
+      }
+      plan = {
+        chosen: result.chosen,
+        cost: result.cost,
+        diet: ensureUserProfile().diet,
+        tags: [...profilePlanTags()],
+        filterLabel: planFilterLabel(),
+        poolSize: pool.length,
+        integer: true,
+        approx: !!result.approx,
+        method: result.method,
+      };
+      calcBtn.disabled = false;
+      renderPlan();
+    } catch (e) {
+      finishErr(`<p class="err">Berechnung fehlgeschlagen: ${esc(e && e.message ? e.message : String(e))}</p>`);
+    }
+  };
+
+  // Paint loader, let one frame run, then start solve (off main thread)
+  requestAnimationFrame(() => setTimeout(run, useInt ? 50 : 0));
+};
+/** Stück (stk) and Tropfen (tr) always last in optimal-plan food lists. */
+function isPieceOrDropUnit(f) {
+  const u = foodUnit(f);
+  return u === "stk" || u === "tr";
+}
+function sortPlanChosen(chosen) {
+  return chosen.slice().sort((a, b) => {
+    const aLast = isPieceOrDropUnit(a.f) ? 1 : 0;
+    const bLast = isPieceOrDropUnit(b.f) ? 1 : 0;
+    if (aLast !== bLast) return aLast - bLast;
+    // within group: higher amount first (previous default)
+    return (b.u || 0) - (a.u || 0);
+  });
+}
+
+/** Food-list scale only (nutrient tables stay daily). Month = 30 days. */
+let planFoodPeriod = "day"; // day | week | month
+const PLAN_PERIOD_MULT = { day: 1, week: 7, month: 30 };
+const PLAN_PERIOD_LABEL = { day: "pro Tag", week: "pro Woche", month: "pro Monat" };
+
+function planFoodMult() {
+  return PLAN_PERIOD_MULT[planFoodPeriod] || 1;
+}
+
+function planFoodRowsHtml(chosen, intMode, mult) {
+  return chosen.map(x => {
+    const amount = planAmount(x.u, intMode, x.f) * mult;
+    const cost = planCost(x.u, x.f, intMode) * mult;
+    return `<tr><td>${esc(x.f.name)}</td><td>${fmtAmount(amount, foodUnit(x.f), intMode)}</td><td>${cost.toFixed(2)} €</td></tr>`;
+  }).join("");
+}
+
+function renderPlan() {
+  if (!plan) return;
+  const out = document.getElementById("planOut");
+  const chosen = sortPlanChosen(plan.chosen);
+  const intMode = !!plan.integer;
+  const bnd = b => b === null ? "–" : b.toString();
+  const mult = planFoodMult();
+
+  // Gesamtkosten zuerst ,  täglich / wöchentlich / monatlich (Monat = 30 Tage)
+  const cell = (l, v) => `<div class="cell"><div class="lbl">${l}</div><div class="val">${v.toFixed(2)} €</div></div>`;
+  const metaBits = [];
+  const fl = plan.filterLabel || planFilterLabel();
+  if (fl && fl !== "alle")
+    metaBits.push(`Filter: <b>${esc(fl)}</b> | ${plan.poolSize || "?"} Lebensmittel`);
+  else if (plan.poolSize)
+    metaBits.push(`${plan.poolSize} Lebensmittel im Pool`);
+  if (intMode) metaBits.push("<b>Nur ganze Mengen</b>");
+  if (plan.approx) metaBits.push("Näherung (gerundet)");
+  const costLine = `<div class="costrow">` +
+    cell("Täglich", plan.cost) + cell("Wöchentlich", plan.cost * 7) + cell("Monatlich", plan.cost * 30) +
+    `</div>` +
+    (metaBits.length ? `<p class="muted" style="margin:0 0 12px">${metaBits.join(" | ")}</p>` : "");
+
+  // Lebensmittel only ,  scaled by period (stk/tr last)
+  const rows = planFoodRowsHtml(chosen, intMode, mult);
+
+  // Nährstoff-Summen always daily (Limiting Factors = Schranke aktiv)
+  const sumRows = PARAMS.map(p => {
+    const total = chosen.reduce((s, x) => s + planNutrient(x.u, x.f, p, intMode), 0);
+    const r = req[p] || { min: null, max: null };
+    const constrained = r.min !== null || r.max !== null;
+    const ok = meets(total, r);
+    const lim = isLimiting(total, r);
+    const cls = constrained && !ok ? "err" : "";
+    const trCls = lim ? " limit" : "";
+    const title = lim
+      ? (atBound(total, r.min) ? "Limiting Factor (Min)" : atBound(total, r.max) ? "Limiting Factor (Max)" : "Limiting Factor")
+      : "";
+    return `<tr class="${trCls.trim()}"${title ? ` title="${title}"` : ""}>` +
+      `<td>${lbl(p)}</td><td class="${cls}">${fmt(total) || "0"}</td>` +
+      `<td class="muted">${bnd(r.min)} / ${bnd(r.max)}</td></tr>`;
+  }).join("");
+
+  // Matrix: Nährstoffe × Lebensmittel ,  always daily amounts
+  const head = `<tr><th>Nährwert</th>` +
+    chosen.map(x => `<th>${esc(x.f.name)}<br><span class="muted">${fmtAmount(planAmount(x.u, intMode, x.f), foodUnit(x.f), intMode)}</span></th>`).join("") +
+    `<th>Summe</th><th>Min / Max</th></tr>`;
+  const body = PARAMS.map(p => {
+    const contrib = chosen.map(x => planNutrient(x.u, x.f, p, intMode));
+    const total = contrib.reduce((a, b) => a + b, 0);
+    const r = req[p] || { min: null, max: null };
+    const constrained = r.min !== null || r.max !== null;
+    const ok = meets(total, r);
+    const cls = constrained && !ok ? "err" : "";
+    const cells = contrib.map(c => `<td>${fmt(c)}</td>`).join("");
+    return `<tr><td>${lbl(p)}</td>${cells}<td class="${cls}"><b>${fmt(total) || "0"}</b></td>` +
+      `<td class="muted">${bnd(r.min)} / ${bnd(r.max)}</td></tr>`;
+  }).join("");
+
+  const periodBtns = ["day", "week", "month"].map(k =>
+    `<button type="button" class="ghost${planFoodPeriod === k ? " active" : ""}" data-period="${k}">${PLAN_PERIOD_LABEL[k]}</button>`
+  ).join("");
+
+  out.innerHTML =
+    costLine +
+    `<div class="bar" style="margin:0 0 8px;align-items:center">` +
+      `<h3 style="margin:0">Lebensmittel</h3>` +
+      `<div class="period-toggle" id="planFoodPeriod" title="Mengen und Kosten der Lebensmittelliste">${periodBtns}</div>` +
+      `<button class="ghost" id="copyList" title="Als Liste kopieren (Tab-getrennt, passt in Excel)">📋 Einkaufsliste kopieren</button>` +
+    `</div>` +
+    `<div class="scroll plan-table-wrap"><table><thead><tr><th>Lebensmittel</th><th>Menge (${esc(PLAN_PERIOD_LABEL[planFoodPeriod])})</th><th>Kosten</th></tr></thead>` +
+      `<tbody id="planFoodBody">${rows}</tbody></table></div>` +
+    `<h3 style="margin:20px 0 8px">Nährstoff-Summen <span class="muted" style="font-weight:400;font-size:13px">| blauer Strich = Limiting Factor | Nährstoffe pro Tag</span></h3>` +
+    `<div class="scroll plan-table-wrap"><table id="sumTable"><thead><tr><th>Nährwert</th><th>Summe</th><th>Min / Max</th></tr></thead><tbody>${sumRows}</tbody></table></div>` +
+    `<h3 style="margin:20px 0 8px">Nährstoffe je Lebensmittel <span class="muted" style="font-weight:400;font-size:13px">| Nährstoffe pro Tag</span></h3>` +
+    `<div class="scroll"><table class="mtx"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+
+  document.getElementById("planFoodPeriod").onclick = e => {
+    const btn = e.target.closest("[data-period]");
+    if (!btn) return;
+    const p = btn.getAttribute("data-period");
+    if (!PLAN_PERIOD_MULT[p] || p === planFoodPeriod) return;
+    planFoodPeriod = p;
+    // Only refresh food list (not nutrient tables)
+    const bodyEl = document.getElementById("planFoodBody");
+    if (bodyEl) bodyEl.innerHTML = planFoodRowsHtml(chosen, intMode, planFoodMult());
+    document.querySelectorAll("#planFoodPeriod [data-period]").forEach(b => {
+      b.classList.toggle("active", b.getAttribute("data-period") === planFoodPeriod);
+    });
+    const th = document.querySelector("#planOut .plan-table-wrap thead th:nth-child(2)");
+    if (th) th.textContent = `Menge (${PLAN_PERIOD_LABEL[planFoodPeriod]})`;
+  };
+
+  document.getElementById("copyList").onclick = e => {
+    const b = e.currentTarget, orig = b.textContent;
+    copyText(planText()).then(
+      () => { b.textContent = "✓ Kopiert"; setTimeout(() => b.textContent = orig, 1500); },
+      () => {   // Clipboard blockiert (z.B. file://): Text zum manuellen Kopieren zeigen
+        let ta = document.getElementById("copyFallback");
+        if (!ta) {
+          ta = document.createElement("textarea");
+          ta.id = "copyFallback"; ta.rows = 8;
+          ta.style.cssText = "display:block;width:100%;max-width:720px;margin-top:8px;font:inherit";
+          b.parentNode.after(ta);
+        }
+        ta.value = planText(); ta.focus(); ta.select();
+        b.textContent = "Markiert to Strg+C"; setTimeout(() => b.textContent = orig, 2000);
+      });
+  };
+}
+
+// Menge: g/ml → unter 1 in mg/µl; stk/tr ohne Unterteilung
+// integerMode: immer ganze Zahlen anzeigen
+// <10 → 2 NK; <100 → 1 NK; sonst ganzzahlig
+function fmtAmount(amount, unit, integerMode) {
+  const u = normalizeUnit(unit);
+  const meta = unitMeta(u);
+  const label = meta.short;
+  if (integerMode) {
+    const n = Math.round(amount);
+    return `${n} ${label}`;
+  }
+  if (amount < 1 && meta.small) {
+    const small = amount * meta.smallFactor;
+    const s = small < 10 ? small.toFixed(2) : small < 100 ? small.toFixed(1) : small.toFixed(0);
+    return `${s} ${meta.small}`;
+  }
+  if (amount < 1) return `${amount.toFixed(3)} ${label}`;
+  if (amount < 10) return `${amount.toFixed(2)} ${label}`;
+  if (amount < 100) return `${amount.toFixed(1)} ${label}`;
+  return `${amount.toFixed(0)} ${label}`;
+}
+
+// Einkaufsliste als Tab-getrennter Text (paste-bar in Excel = die "CSV"-Variante)
+function planText() {
+  const intMode = !!(plan && plan.integer);
+  const mult = planFoodMult();
+  const period = PLAN_PERIOD_LABEL[planFoodPeriod] || "pro Tag";
+  const head = `Lebensmittel\tMenge (${period})\tKosten (€)`;
+  const rows = sortPlanChosen(plan.chosen).map(x => {
+    const amount = planAmount(x.u, intMode, x.f) * mult;
+    const cost = planCost(x.u, x.f, intMode) * mult;
+    return `${x.f.name}\t${fmtAmount(amount, foodUnit(x.f), intMode)}\t${cost.toFixed(2)}`;
+  });
+  const total = plan.cost * mult;
+  return "Optimaler Plan\n" + head + "\n" + rows.join("\n") +
+    `\n\nGesamt (${period})\t${total.toFixed(2)} €` +
+    `\n(Referenz)\t${plan.cost.toFixed(2)} €/Tag\t${(plan.cost * 7).toFixed(2)} €/Woche\t${(plan.cost * 30).toFixed(2)} €/Monat` +
+    (intMode ? "\n(Nur ganze Mengen)" : "");
+}
+// file:// ist kein secure context → Clipboard-API fehlt, execCommand-Fallback
+function copyText(txt) {
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt);
+  return new Promise((res, rej) => {
+    const ta = document.createElement("textarea");
+    ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy") ? res() : rej(); } catch (e) { rej(e); } finally { ta.remove(); }
+  });
+}
+
+// ---------- helpers ----------
+function num(v) { const s = String(v).trim(); if (s === "") return null; const n = parseFloat(s); return isNaN(n) ? null : n; }
+function fmt(n) { return Math.abs(n) < 0.05 ? "" : (+n.toFixed(1)).toString(); }
+// relative Toleranz: fängt Solver-Rundungsfehler ab, ohne echte Verletzungen zu übersehen
+function boundTol(v) {
+  if (v == null) return 0;
+  return Math.max(1e-4, Math.abs(v) * 1e-4); // 0.01 % bzw. min. 1e-4
+}
+function meets(total, r) {
+  if (!r) return true;
+  return (r.min === null || total >= r.min - boundTol(r.min)) &&
+         (r.max === null || total <= r.max + boundTol(r.max));
+}
+/** Schranke ist aktiv (Limiting Factor), wenn Summe praktisch = Min oder = Max. */
+function atBound(total, bound) {
+  if (bound === null || bound === undefined) return false;
+  // etwas großzügiger als meets, typisch für knappe LP-Schranken
+  const tol = Math.max(1e-3, Math.abs(bound) * 5e-3); // 0,5 %
+  return Math.abs(total - bound) <= tol;
+}
+function isLimiting(total, r) {
+  if (!r) return false;
+  return atBound(total, r.min) || atBound(total, r.max);
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+// Nur Anzeige: interne Schlüssel (parameter.md/database.json/requirements) bleiben englisch.
+const LABEL = {
+  "Energy (cal)": "Energie (kcal)", "Total Fat (g)": "Fett (g)",
+  "Saturated Fat (g)": "davon gesättigte Fettsäuren (g)", "Total Carbohydrate (g)": "Kohlenhydrate gesamt (g)",
+  "Total sugars (g)": "Zucker gesamt (g)", "Dietary Fibre (g)": "Ballaststoffe (g)",
+  "Sodium (mg)": "Natrium (mg)", "Cholesterol (mg)": "Cholesterin (mg)", "Potassium (mg)": "Kalium (mg)",
+  "Phosphorus (mg)": "Phosphor (mg)", "Iron (mg)": "Eisen (mg)", "Copper (mg)": "Kupfer (mg)",
+  "Zinc (mg)": "Zink (mg)", "Chloride (mg)": "Chlorid (mg)", "Manganese (mg)": "Mangan (mg)",
+  "Selenium (µg)": "Selen (µg)", "Iodine (µg)": "Jod (µg)", "Beta-Carotene (µg)": "Beta-Carotin (µg)",
+  "Total Vitamin A (µg)": "Vitamin A gesamt (µg)", "Folate (Vitamin B9) (µg)": "Folat (Vitamin B9) (µg)",
+  "Vitamin B5 (Pantothenic Acid) (mg)": "Vitamin B5 (Pantothensäure) (mg)"
+};
+function lbl(p) { return LABEL[p] || p; }
+
+// ---------- self-check (run demo() in the console) ----------
+function demo() {
+  const m = { optimize: "cost", opType: "min",
+    constraints: { protein: { min: 20 } },
+    variables: { A: { cost: 1, protein: 10 }, B: { cost: 3, protein: 20 } } };
+  const r = solver.Solve(m);
+  console.assert(r.feasible, "demo: should be feasible");
+  console.assert(Math.abs(r.result - 2) < 1e-6, "demo: cheapest cost should be 2, got " + r.result);
+  console.assert(Math.abs((r.A || 0) - 2) < 1e-6, "demo: should pick 2 units of A, got " + r.A);
+  console.log("demo() ok:", r);
+}
+window.demo = demo;
+
+const foodModal = document.getElementById("foodModal");
+document.getElementById("fmClose").onclick = () => foodModal.close();
+foodModal.onclick = e => { if (e.target === foodModal) foodModal.close(); };
+
+boot();
+</script>
+</body>
+</html>
