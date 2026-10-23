@@ -1,7 +1,5 @@
 # Ernährungsrechner v1.5
 
-Stand: 23.10.2026
-
 Der Ernährungsrechner vergleicht Lebensmittel, verwaltet persönliche Tagesziele und berechnet einen günstigen Ernährungsplan. Die deutsche und die englische Oberfläche laufen mit derselben Datenbank und demselben Solver im Browser. Ein Konto und eine Serverberechnung sind nicht nötig.
 
 ## Neu in v1.5
