@@ -23,8 +23,6 @@ v1.5_Ernaehrungsrechner/
 ├── assets/
 │   ├── site-header.css
 │   └── site-header.js
-├── images/
-│   └── website-home-menu.png
 ├── ernaerung/
 │   ├── index.html
 │   ├── database.json
@@ -39,9 +37,9 @@ v1.5_Ernaehrungsrechner/
         └── index.html
 ```
 
-Das Paket folgt dem Aufbau von v1.4 mit getrennten Sprachseiten und einer gemeinsamen Datenbank. Die englische Seite liegt jetzt direkt im tatsächlichen Website-Zielpfad `en/nutrition/`. In v1.4 war sie im Download unter `nutrition/` abgelegt. Gemeinsame Header-Dateien und das Vorschaubild liegen ebenfalls bei.
+Das Paket folgt dem Aufbau von v1.4 mit getrennten Sprachseiten und einer gemeinsamen Datenbank. Die englische Seite liegt jetzt direkt im tatsächlichen Website-Zielpfad `en/nutrition/`. In v1.4 war sie im Download unter `nutrition/` abgelegt. Die gemeinsamen Header-Dateien liegen ebenfalls bei.
 
-Die Ordner `images/favicons/`, `Daten/` und `benchmarks/` sind nicht enthalten. Die unveränderten Favicons können aus der bestehenden Website verwendet werden. Fehlende Favicons verhindern den Betrieb des Rechners nicht. Die Datei `database.js` wird von diesen Seiten nicht geladen; verwendet wird `database.json`.
+Der gesamte Ordner `images/` einschließlich `images/favicons/` sowie `Daten/` und `benchmarks/` sind nicht enthalten. Bilder und Favicons können aus der bestehenden Website verwendet werden. Fehlende Vorschaubilder und Favicons verhindern den Betrieb des Rechners nicht. Die Datei `database.js` wird von diesen Seiten nicht geladen; verwendet wird `database.json`.
 
 ## Lokal starten
 
@@ -62,7 +60,7 @@ Die Hauptnavigation verweist teilweise auf weitere Seiten von smstark-projekt.de
 
 ## Auf einen Webserver hochladen
 
-Die Ordner `ernaerung`, `en`, `assets` und `images` in die Webwurzel übertragen. Beim Hochladen vorhandene Ordner zusammenführen und nur die enthaltenen Dateien aktualisieren. Andere Dateien der Website bleiben bestehen. Zuerst Daten und JavaScript-Dateien übertragen, danach die beiden HTML-Dateien.
+Die Ordner `ernaerung`, `en` und `assets` in die Webwurzel übertragen. Beim Hochladen vorhandene Ordner zusammenführen und nur die enthaltenen Dateien aktualisieren. Andere Dateien der Website bleiben bestehen. Zuerst Daten und JavaScript-Dateien übertragen, danach die beiden HTML-Dateien.
 
 Die Zielpfade lauten:
 
@@ -71,7 +69,6 @@ Die Zielpfade lauten:
 | `ernaerung/index.html` und die zugehörigen Dateien | `/ernaerung/` |
 | `en/nutrition/index.html` | `/en/nutrition/index.html` |
 | `assets/site-header.css` und `assets/site-header.js` | `/assets/` |
-| `images/website-home-menu.png` | `/images/website-home-menu.png` |
 
 Für einen Betrieb in einem zusätzlichen Unterverzeichnis müssen die absoluten Pfade der englischen Seite angepasst werden. Das Paket ist für die oben genannte Webwurzel vorbereitet. Eine Veröffentlichung dieses ZIPs auf GitHub aktualisiert die laufende Website nicht automatisch.
 
@@ -94,6 +91,6 @@ Die erweiterten Filter wurden auf Deutsch und Englisch im Browser mit Desktop- u
 
 ## English quick start
 
-Extract the archive, start a static HTTP server in the package root, and open <http://localhost:8000/en/nutrition/>. Keep the `ernaerung/`, `en/`, `assets/` and `images/` folders together. The English page shares the database and solver from `/ernaerung/`. It includes the same advanced filters and whole-amount planning features as the German page.
+Extract the archive, start a static HTTP server in the package root, and open <http://localhost:8000/en/nutrition/>. Keep the `ernaerung/`, `en/` and `assets/` folders together. Images and favicons are excluded from this package. The English page shares the database and solver from `/ernaerung/`. It includes the same advanced filters and whole-amount planning features as the German page.
 
 Food composition, contaminant estimates and prices have the limitations described above. Some new food profiles use comparable foods rather than product-specific measurements, and UK/US prices are partly estimates.

@@ -13,7 +13,7 @@ Stand: 23.10.2026. Die Version enthält 1.636 Lebensmittel, erweiterte kombinier
 - [Entpackte Dateien](versionen/v1.5/entpackt/v1.5_Ernaehrungsrechner)
 - [SHA-256 der ZIP](versionen/v1.5/v1.5_Ernaehrungsrechner.zip.sha256)
 
-Das Paket enthält die Zielpfade `ernaerung/`, `en/nutrition/`, gemeinsame Header-Dateien und das Vorschaubild. Favicons sind auf Wunsch nicht enthalten. Lokal wird ein statischer HTTP-Server im Paketverzeichnis benötigt.
+Das Paket enthält die Zielpfade `ernaerung/`, `en/nutrition/` und gemeinsame Header-Dateien. Der gesamte Ordner `images/` einschließlich der Favicons ist auf Wunsch nicht enthalten. Lokal wird ein statischer HTTP-Server im Paketverzeichnis benötigt.
 
 ## Versionen
 
